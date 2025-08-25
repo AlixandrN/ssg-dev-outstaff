@@ -7,6 +7,8 @@ const TEXT =
 export enum EProductCardType {
   REACT = "react",
   NODE = "node",
+  TS = "typescript",
+  ANGULAR = "angular",
 }
 
 export const ProductsSection = () => {
@@ -14,6 +16,7 @@ export const ProductsSection = () => {
     <div className="flex flex-row justify-center items-center gap-4 card-xl">
       <ProductCard type={EProductCardType.REACT} content={TEXT} />
       <ProductCard type={EProductCardType.NODE} content={TEXT} />
+      <ProductCard type={EProductCardType.ANGULAR} content={TEXT} />
     </div>
   );
 };
