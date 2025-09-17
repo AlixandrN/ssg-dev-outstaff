@@ -1,0 +1,10 @@
+{
+  "COMMON": {
+    "hello": "Hello World!",
+    "language": "Language"
+  },
+  "HOME": {
+    "title": "Home Page",
+    "subtitle": "Welcome to the home page"
+  }
+}

@@ -5,6 +5,7 @@ import { Logo } from "./Logo";
 import { NavDesktop } from "./NavDesktop";
 import { BurgerButton } from "./BurgerButton";
 import { NavMobile } from "./NavMobile";
+import { DesktopLanguageSwitcher } from "../ui/LanguageSwitcher/DesktopLanguageSwitcher";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,19 +38,22 @@ export const Header = () => {
         ${
           isScrolled
             ? "backdrop-blur-sm shadow-lg py-3"
-            : "bg-gradient-to-r from-primary to-secondary text-primary-content h-[100px] flex items-center justify-center"
+            : "bg-gradient-to-r from-primary to-secondary-dark text-primary-content h-[100px] flex items-center justify-center"
         }
         ${isMobileMenuOpen ? "bg-primary text-primary-content" : ""}
       `}
       >
-        <div className="container mx-auto px-4">
+        <div className="container px-4">
           <div className="flex items-center justify-between">
             <Logo isScrolled={isScrolled} />
-            <NavDesktop />
-            <BurgerButton
-              toggleBurgerMenu={toggleBurgerMenu}
-              isBurgerMenuOpen={isMobileMenuOpen}
-            />
+            <div className="flex items-center justify-between">
+              <NavDesktop />
+              <DesktopLanguageSwitcher />
+              <BurgerButton
+                toggleBurgerMenu={toggleBurgerMenu}
+                isBurgerMenuOpen={isMobileMenuOpen}
+              />
+            </div>
           </div>
         </div>
         <NavMobile

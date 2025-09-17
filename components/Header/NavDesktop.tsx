@@ -4,7 +4,7 @@ import Link from "next/link";
 export const NavDesktop = () => {
   const list = Object.keys(EPublicRoutes);
   return (
-    <nav className="hidden md:flex space-x-8">
+    <nav className="hidden md:flex space-x-8 items-center">
       {list.map((item) => (
         <Link
           key={item}
