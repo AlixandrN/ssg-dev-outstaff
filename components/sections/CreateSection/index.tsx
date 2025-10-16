@@ -4,7 +4,8 @@ import { useTranslation } from "@/hooks/useTranslation";
 
 export const CreateSection = () => {
   const { t: tHome } = useTranslation("HOME");
-  const features = tHome("FEATURES", { returnObjects: true });
+  const { t: tList } = useTranslation("LIST");
+  const features = tList("FEATURES", { returnObjects: true });
   const fontStyle = "font-bold text-[42px] text-primary-content";
 
   return (
