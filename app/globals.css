@@ -1,9 +1,39 @@
 @import "tailwindcss";
 
- @plugin "daisyui" {
-   themes: light --default, dark --prefersdark, cupcake, bumblebee;
- }
+@plugin "daisyui" {
+  themes: light --default, dark --prefersdark, cupcake, bumblebee;
+}
 @import "tw-animate-css";
+
+/* Text display animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.animate-blink {
+  animation: blink 1.2s infinite;
+}
+
+.animate-smooth-fade-in {
+  animation: fadeIn 0.2s ease-in-out;
+}
 
 @keyframes gradient {
   0% {
@@ -20,7 +50,6 @@
 .animate-gradient {
   animation: gradient 3s ease infinite;
 }
-
 
 @custom-variant dark (&:is(.dark *));
 

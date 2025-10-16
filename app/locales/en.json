@@ -6,6 +6,13 @@
   "HOME": {
     "title": "Home Page",
     "subtitle": "Welcome to the home page",
+    "WE_CREATE": "We Create",
+    "FEATURES": [
+      "AI Solutions",
+      "Mobile Apps",
+      "Custom Software",
+      "Websites"
+    ],
     "DESCRIPTION_REACT": "React is a library for building user interfaces with a component-based approach. React is ideal for creating dynamic and interactive web applications, such as social networks, dashboards, and single-page applications (SPA). Due to its component-based structure and high performance, React is often used in applications that require frequent data updates, like real-time apps.",
     "DESCRIPTION_ANGULAR": "Angular is a Google framework offering a complete solution for developing web applications. Angular is a great choice for building complex and scalable enterprise applications, such as CRM systems, ERP platforms, and solutions for handling large volumes of data. With built-in tools for working with forms, validation, routing, and dependency injection, Angular is well-suited for large projects with intricate logic.",
     "DESCRIPTION_VUE": "Vue is a progressive framework for creating user interfaces that easily integrates with other libraries. Vue is perfect for creating applications where ease of integration and flexibility are key. It works great for developing small to medium-sized web applications, such as dashboards, blogs, and content management systems (CMS). Vue is also suitable for integrating into existing projects and is often used to enhance front-end interactions in combination with other libraries.",

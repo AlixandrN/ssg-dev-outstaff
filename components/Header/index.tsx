@@ -38,7 +38,7 @@ export const Header = () => {
         ${
           isScrolled
             ? "backdrop-blur-sm shadow-lg py-3"
-            : "bg-gradient-to-r from-primary to-secondary-dark text-primary-content h-[100px] flex items-center justify-center"
+            : "bg-gradient-to-r from-primary to-secondary-dark text-primary-content h-[100px] flex items-center"
         }
         ${isMobileMenuOpen ? "bg-primary text-primary-content" : ""}
       `}
