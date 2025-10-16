@@ -7,6 +7,7 @@ declare module "i18next" {
     resources: {
       COMMON: typeof enTranslations.COMMON;
       HOME: typeof enTranslations.HOME;
+      LIST: typeof enTranslations.LIST;
     };
   }
 }

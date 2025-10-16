@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import I18nProvider from "@/app/providers/I18nProvider";
 import "./globals.css";
 import { Header } from "@/components/Header";
-import I18nProvider from "@/app/providers/I18nProvider";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin", "cyrillic"] });
+// const montserrat = Montserrat({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
   title: "Brand SSG",
