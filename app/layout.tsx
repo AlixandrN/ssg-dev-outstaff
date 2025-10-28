@@ -4,12 +4,22 @@ import I18nProvider from "@/app/providers/I18nProvider";
 import "./globals.css";
 import { Header } from "@/components/Header";
 
-const inter = Inter({ subsets: ["latin", "cyrillic"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  preload: true,
+  fallback: ["system-ui", "arial"],
+});
 // const montserrat = Montserrat({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
-  title: "Brand SSG",
+  title: {
+    default: "Brand SSG",
+    template: "%s | Brand SSG", // for dynamic title
+  },
   description: "SSG Internationalized app",
+  robots: "index, follow",
+  keywords: ["web", "dev", "web-dev"],
 };
 
 export default function RootLayout({
