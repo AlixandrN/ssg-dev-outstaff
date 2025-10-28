@@ -193,3 +193,16 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* .no-shadow */
+.no-shadow {
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+.no-shadow:hover,
+.no-shadow:focus,
+.no-shadow:active {
+  box-shadow: none !important;
+  transform: none !important;
+}

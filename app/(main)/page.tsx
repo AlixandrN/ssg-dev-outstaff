@@ -7,7 +7,7 @@ import { CreateSection } from "@/components/sections/CreateSection";
 
 export default function Home() {
   return (
-    <div className="mx-auto flex flex-col gap-20 w-full justify-around ">
+    <div className="mx-auto flex flex-col gap-10 w-full justify-around ">
       <CreateSection />
       <SwipeProductsSection />
       <IDESection />
