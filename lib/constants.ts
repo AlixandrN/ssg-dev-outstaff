@@ -13,7 +13,9 @@ export const LANGUAGE_LIST: { id: TLanguage; label: string }[] = [
   { id: "ru", label: "Русский" },
 ];
 
-export enum EProductCard {
+export const currency = "р";
+
+export enum EFrameworkCard {
   REACT = "react",
   ANGULAR = "angular",
   VUE = "vue",

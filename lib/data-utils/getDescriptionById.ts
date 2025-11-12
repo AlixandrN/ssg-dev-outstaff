@@ -1,21 +1,21 @@
 import enTranslations from "@/app/locales/en.json";
-import { EProductCard } from "../constants";
+import { EFrameworkCard } from "../constants";
 
-export const getProductCardDescription = (
-  type: EProductCard
+export const getDescriptionById = (
+  type: EFrameworkCard
 ): keyof typeof enTranslations.HOME => {
   switch (type) {
-    case EProductCard.REACT:
+    case EFrameworkCard.REACT:
       return "DESCRIPTION_REACT";
-    case EProductCard.ANGULAR:
+    case EFrameworkCard.ANGULAR:
       return "DESCRIPTION_ANGULAR";
-    case EProductCard.VUE:
+    case EFrameworkCard.VUE:
       return "DESCRIPTION_VUE";
-    case EProductCard.NEXT:
+    case EFrameworkCard.NEXT:
       return "DESCRIPTION_NEXT";
-    case EProductCard.NODE:
+    case EFrameworkCard.NODE:
       return "DESCRIPTION_NODE";
-    case EProductCard.TS:
+    case EFrameworkCard.TS:
       return "DESCRIPTION_TS";
     default:
       return "DESCRIPTION_TS";
