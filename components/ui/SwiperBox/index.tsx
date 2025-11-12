@@ -1,22 +1,37 @@
 "use client";
-
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useState } from "react";
 import { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { EProductCard } from "@/lib/constants";
-import { SwiperButton } from "@/components/sections/SwipeProductsSection/SwiperButton";
-import { ProductCard } from "@/components/sections/SwipeProductsSection/ProductCard";
+import { TFrameworkCard, TProductCard } from "@/lib/types";
+import { ProductCard } from "../cards/ProductCard";
+import { FrameworkCard } from "../cards/FrameworkCard";
+import { SwiperNavigation } from "./SwiperNavigation";
 
-interface ISwiperBox {
-  list: EProductCard[];
+interface IBaseProps {
+  variant: "product" | "framework";
+  isLoopMode?: boolean;
 }
 
-export const SwiperBox = ({ list }: ISwiperBox) => {
+type TProductSwiper = IBaseProps & {
+  variant: "product";
+  list: TProductCard[];
+};
+
+type TFrameworkSwiper = IBaseProps & {
+  variant: "framework";
+  list: TFrameworkCard[];
+};
+
+export type TSwiperBox = TProductSwiper | TFrameworkSwiper;
+
+export const SwiperBox = ({ variant, list, isLoopMode }: TSwiperBox) => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const [isBeginning, setIsBeginning] = useState(true);
+  const [isEnd, setIsEnd] = useState(false);
 
   const handlePrev = useCallback(() => {
     swiperRef.current?.slidePrev();
@@ -26,45 +41,24 @@ export const SwiperBox = ({ list }: ISwiperBox) => {
     swiperRef.current?.slideNext();
   }, []);
 
+  const updateNavigationState = useCallback(() => {
+    if (swiperRef.current) {
+      setIsBeginning(swiperRef.current.isBeginning);
+      setIsEnd(swiperRef.current.isEnd);
+    }
+  }, []);
+
   return (
-    <>
-      <style jsx>{`
-        .swiper-pagination-bullet {
-          width: 8px;
-          height: 8px;
-          background: rgba(0, 0, 0, 0.3);
-          opacity: 0.5;
-          transition: all 0.3s ease;
-        }
-
-        .swiper-pagination-bullet-active {
-          background: #000000;
-          opacity: 1;
-          width: 12px;
-          height: 12px;
-        }
-
-        @media (max-width: 768px) {
-          .swiper-button-prev,
-          .swiper-button-next {
-            display: none !important;
-          }
-        }
-      `}</style>
-
+    <div className="relative">
       <Swiper
-        modules={[Navigation, Pagination, Autoplay]}
-        spaceBetween={40}
-        slidesPerView={5}
+        modules={[Navigation, Autoplay]}
+        spaceBetween={20}
+        slidesPerView={2}
+        loop={isLoopMode}
+        loopAdditionalSlides={10}
         navigation={{
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev",
-        }}
-        pagination={{
-          clickable: true,
-          el: ".swiper-pagination",
-          bulletClass: "swiper-pagination-bullet",
-          bulletActiveClass: "swiper-pagination-bullet-active",
         }}
         autoplay={{
           delay: 4000,
@@ -72,43 +66,73 @@ export const SwiperBox = ({ list }: ISwiperBox) => {
         }}
         breakpoints={{
           320: {
-            slidesPerView: 1,
-            spaceBetween: 10,
+            slidesPerView: isLoopMode ? 3 : 1,
+            spaceBetween: 16,
+          },
+          480: {
+            slidesPerView: isLoopMode ? 4 : 1.2,
+            spaceBetween: 16,
           },
           640: {
-            slidesPerView: 1.2,
-            spaceBetween: 15,
-          },
-          768: {
-            slidesPerView: 2,
+            slidesPerView: isLoopMode ? 5 : 1.5,
             spaceBetween: 20,
           },
+          768: {
+            slidesPerView: isLoopMode ? 5 : 2,
+            spaceBetween: 24,
+          },
           1024: {
-            slidesPerView: 3,
-            spaceBetween: 25,
+            slidesPerView: isLoopMode ? 7 : 3,
+            spaceBetween: 28,
           },
           1280: {
-            slidesPerView: 4,
-            spaceBetween: 30,
+            slidesPerView: isLoopMode ? 8 : 3,
+            spaceBetween: 32,
           },
         }}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
+          updateNavigationState();
         }}
-        className="w-full mb-4"
+        onSlideChange={updateNavigationState}
+        onReachBeginning={() => setIsBeginning(true)}
+        onReachEnd={() => setIsEnd(true)}
+        onFromEdge={() => {
+          if (swiperRef.current) {
+            setIsBeginning(swiperRef.current.isBeginning);
+            setIsEnd(swiperRef.current.isEnd);
+          }
+        }}
+        className="w-full"
       >
-        {list.map((card) => (
-          <SwiperSlide key={card} className="h-auto">
-            <ProductCard type={card} />
-          </SwiperSlide>
-        ))}
+        {(() => {
+          switch (variant) {
+            case "product":
+              return list.map((item, index) => (
+                <SwiperSlide key={index}>
+                  <ProductCard {...item} />
+                </SwiperSlide>
+              ));
+
+            case "framework":
+              return [...list, ...list, ...list].map((item, index) => (
+                <SwiperSlide key={index}>
+                  <FrameworkCard {...item} />
+                </SwiperSlide>
+              ));
+
+            default:
+              return null;
+          }
+        })()}
       </Swiper>
-
-      <SwiperButton type="prev" handleClick={handlePrev} />
-
-      <SwiperButton type="next" handleClick={handleNext} />
-
-      <div className=" swiper-pagination absolute bottom-0 left-0 right-0 flex justify-center gap-1 mt-4"></div>
-    </>
+      <SwiperNavigation
+        onPrev={handlePrev}
+        onNext={handleNext}
+        isBeginning={isLoopMode ? false : isBeginning}
+        isEnd={isLoopMode ? false : isEnd}
+        className={variant === "framework" ? "hidden" : ""}
+      />
+    </div>
   );
 };
