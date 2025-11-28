@@ -2,6 +2,11 @@
 
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark, cupcake, bumblebee;
+  root: ":root";
+  include: ;
+  exclude: ;
+  prefix: ;
+  logs: true;
 }
 @import "tw-animate-css";
 
@@ -54,6 +59,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --color-c-green: var(--c-green);
+  --color-c-green-hover: var(--c-green-hover);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -94,6 +101,8 @@
 }
 
 :root {
+  --c-green: oklch(0.754 0.146 155.8);
+  --c-green-hover: oklch(0.68 0.146 155.8);
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -205,4 +214,21 @@ html {
 .no-shadow:active {
   box-shadow: none !important;
   transform: none !important;
+}
+
+.btn-green {
+  background-color: var(--c-green);
+  border: none;
+  transition: background-color 0.2s ease-in-out;
+  &:hover {
+    background-color: var(--c-green-hover);
+  }
+  &:active {
+    background-color: var(--c-green-hover);
+    transform: translateY(0.5px);
+  }
+}
+
+.section-style {
+  @apply relative w-full md:px-8 flex gap-2 ;
 }

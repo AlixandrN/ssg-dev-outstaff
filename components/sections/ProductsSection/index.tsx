@@ -14,7 +14,7 @@ export const ProductsSection = () => {
   }));
 
   return (
-    <section className="relative w-full md:px-8 flex flex-col gap-2">
+    <section className="section-style flex-col">
       <h1 className="text-3xl font-bold">{tHome("GREATE_DEALS")}</h1>
       <SwiperBox variant="product" list={list} />
     </section>
