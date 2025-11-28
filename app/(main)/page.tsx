@@ -5,11 +5,13 @@ import { ScrollAnimationBox } from "@/components/ScrollAnimationBox";
 import { ProductsSection } from "@/components/sections/ProductsSection";
 import { FirstSection } from "@/components/sections/FirstSection";
 import { FrameworksSection } from "@/components/sections/FrameworksSection";
+import { GetInTouchSection } from "@/components/sections/GetInTouchSection";
 
 export default function Home() {
   return (
     <div className="mx-auto flex flex-col md:gap-5 w-full justify-around ">
       <FirstSection />
+      <GetInTouchSection />
       <ProductsSection />
       <FrameworksSection />
       <IDESection />

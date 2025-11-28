@@ -1,31 +1,46 @@
+import { ComponentPropsWithoutRef } from "react";
 import { ICONS, TIcon } from "@/lib/icons";
 
-type TButtonIcon = {
+interface IButtonIcon extends ComponentPropsWithoutRef<"button"> {
   label?: string;
   className?: string;
   icon?: TIcon;
   iconClassName?: string;
   onClick?: VoidFunction;
   disabled?: boolean;
-};
+  isSubmitting?: boolean;
+}
 
 export const ButtonIcon = ({
+  type = "button",
   label,
   icon = "star",
   iconClassName = "h-4 w-4",
   className = "",
   onClick,
   disabled = false,
-}: TButtonIcon) => {
-  const IconComponent = ICONS[icon];
+  isSubmitting,
+  ...props
+}: IButtonIcon) => {
+  const IconComponent = isSubmitting ? ICONS["spinner"] : ICONS[icon];
   return (
     <button
-      className={`btn bg-[#5ac581] text-primary-content border-[#4aae6f] no-shadow ${className}`}
+      type={type}
+      className={`btn btn-green text-primary-content ${className}`}
       onClick={onClick}
-      disabled={disabled}
-      aria-label={label ? undefined : `${icon} button`}
+      disabled={isSubmitting || disabled}
+      aria-label={
+        isSubmitting
+          ? "The form is being submitted, please wait"
+          : label
+          ? undefined
+          : `${icon} button`
+      }
+      {...props}
     >
-      {label && label}
+      {(() => {
+        return isSubmitting ? "Submitting the form..." : label ? label : null;
+      })()}
       {IconComponent(iconClassName)}
     </button>
   );

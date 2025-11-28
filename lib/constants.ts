@@ -23,3 +23,9 @@ export enum EFrameworkCard {
   NEXT = "next",
   TS = "typescript",
 }
+
+export type TCustomerData = {
+  name: string;
+  email: string;
+  message: string;
+};
