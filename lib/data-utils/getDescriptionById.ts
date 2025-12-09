@@ -1,9 +1,9 @@
-import enTranslations from "@/app/locales/en.json";
 import { EFrameworkCard } from "../constants";
+import { IData } from "../types";
 
 export const getDescriptionById = (
   type: EFrameworkCard
-): keyof typeof enTranslations.HOME => {
+): keyof IData["HOME"] => {
   switch (type) {
     case EFrameworkCard.REACT:
       return "DESCRIPTION_REACT";

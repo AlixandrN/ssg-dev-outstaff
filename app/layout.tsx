@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="ru">
       <body className={`${inter.className} bg-neutral-content`}>
         <I18nProvider>
           <main className={" p-0 pt-[100px] bg-inherit h-full"}>

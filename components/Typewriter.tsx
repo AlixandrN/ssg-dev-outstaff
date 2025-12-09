@@ -57,7 +57,7 @@ export const Typewriter = ({
     <div className={`${fontStyle} px-4 min-h-[60px] flex items-center`}>
       <span className="animate-smooth-fade-in inline-block">
         {view}
-        <span className="animate-blink inline-block h-[1em] w-[1px] bg-current ml-1 align-middle" />
+        <span className="animate-blink inline-block h-[1em] w-px bg-current ml-1 align-middle" />
       </span>
     </div>
   );
