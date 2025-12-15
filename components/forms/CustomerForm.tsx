@@ -47,17 +47,14 @@ export const CustomerForm = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="max-w-md p-6 bg-white rounded-lg shadow-md"
+      className="max-w-md p-6 bg-white md:rounded-lg shadow-md w-full md:w-auto h-[calc(100vh-200px)] md:h-auto"
       noValidate
       aria-labelledby="form-title"
       aria-describedby="form-description"
     >
-      <h1 id="form-title" className="text-2xl font-bold mb-2 text-gray-800">
+      <h1 id="form-title" className="text-xl font-bold mb-2 text-gray-800">
         Форма обратной связи
       </h1>
-      <p id="form-description" className="text-gray-600 mb-6">
-        Let’s connect to help you and your team.
-      </p>
       <InputLabel
         id="name"
         value={customerData.name}

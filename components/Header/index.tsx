@@ -5,7 +5,6 @@ import { Logo } from "./Logo";
 import { NavDesktop } from "./NavDesktop";
 import { BurgerButton } from "./BurgerButton";
 import { NavMobile } from "./NavMobile";
-import { DesktopLanguageSwitcher } from "../ui/LanguageSwitcher/DesktopLanguageSwitcher";
 
 export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -48,7 +47,6 @@ export const Header = () => {
             <Logo isScrolled={isScrolled} />
             <div className="flex items-center justify-between">
               <NavDesktop />
-              <DesktopLanguageSwitcher />
               <BurgerButton
                 toggleBurgerMenu={toggleBurgerMenu}
                 isBurgerMenuOpen={isMobileMenuOpen}

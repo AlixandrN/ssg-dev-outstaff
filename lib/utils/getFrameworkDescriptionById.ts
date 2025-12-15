@@ -1,7 +1,7 @@
 import { EFrameworkCard } from "../constants";
 import { IData } from "../types";
 
-export const getDescriptionById = (
+export const getFrameworkDescriptionById = (
   type: EFrameworkCard
 ): keyof IData["HOME"] => {
   switch (type) {

@@ -4,7 +4,7 @@ import { IData } from "@/lib/types";
 export const GetInTouchSection = ({ home }: { home: IData["HOME"] }) => {
   const { GET_IN_TOUCH } = home;
   return (
-    <section className="section-style justify-around">
+    <section className="section-style justify-around flex-col">
       <h1 className="text-3xl font-bold">{GET_IN_TOUCH}</h1>
       <CustomerForm />
     </section>

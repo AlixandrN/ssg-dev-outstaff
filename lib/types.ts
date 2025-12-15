@@ -1,5 +1,3 @@
-import enTranslations from "@/app/locales/en.json";
-
 export type TProduct = {
   id: string;
   title: string;
@@ -15,9 +13,6 @@ export interface IData {
   FEATURES: string[];
   PRODUCTS: TProduct[];
 }
-
-export type THomeTranslations = keyof typeof enTranslations.HOME;
-export type TFeaturesTranslations = keyof typeof enTranslations.LIST.PRODUCTS;
 
 export type TFrameworkCard = {
   home: IData["HOME"];

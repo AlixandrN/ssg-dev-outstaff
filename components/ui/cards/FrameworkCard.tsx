@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { MakeOrderButton } from "@/components/MakeOrderButton";
-import { getDescriptionById } from "@/lib/data-utils/getDescriptionById";
+import { getFrameworkDescriptionById } from "@/lib/utils/getFrameworkDescriptionById";
 import { EFrameworkCard } from "@/lib/constants";
 import { TFrameworkCard } from "@/lib/types";
 
@@ -9,7 +9,7 @@ const bgCard = "bg-primary-content	";
 
 export const FrameworkCard = ({ id, isFullMode, home }: TFrameworkCard) => {
   const imagePath = `/${id}_icon.svg`;
-  const content = getDescriptionById(id as EFrameworkCard);
+  const content = getFrameworkDescriptionById(id as EFrameworkCard);
 
   return isFullMode ? (
     <div
