@@ -16,3 +16,20 @@ export type TFrameworkCard = {
   onClick: VoidFunction;
   isFullMode?: boolean;
 };
+
+export type TProduct = {
+  id: string;
+  title: string;
+  onClick: VoidFunction;
+  bage: string;
+  price: string;
+  advantages: string[];
+  home: Record<string, string>;
+};
+
+export interface IData {
+  COMMON: Record<string, string>;
+  HOME: Record<string, string>;
+  FEATURES: string[];
+  PRODUCTS: TProduct[];
+}
