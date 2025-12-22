@@ -1,5 +1,3 @@
-import React from "react";
-
 export const Logo = ({ isScrolled }: { isScrolled?: boolean }) => {
   return (
     <h1
@@ -7,7 +5,7 @@ export const Logo = ({ isScrolled }: { isScrolled?: boolean }) => {
         isScrolled ? "text-xl" : "text-2xl"
       }`}
     >
-      SSG Brand
+      LOGO
     </h1>
   );
 };
