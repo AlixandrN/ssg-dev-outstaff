@@ -6,14 +6,17 @@ import { ProductsSection } from "@/components/sections/ProductsSection";
 import { FirstSection } from "@/components/sections/FirstSection";
 import { FrameworksSection } from "@/components/sections/FrameworksSection";
 import { GetInTouchSection } from "@/components/sections/GetInTouchSection";
+import { getLocalData } from "@/lib/data-utils/getLocalData";
+import { IData } from "@/lib/types";
 
-export default function Home() {
+export default async function HomePage() {
+  const { HOME, FEATURES, PRODUCTS } = await getLocalData<IData>("app-data");
   return (
     <div className="mx-auto flex flex-col md:gap-5 w-full justify-around ">
-      <FirstSection />
-      <GetInTouchSection />
-      <ProductsSection />
-      <FrameworksSection />
+      <FirstSection home={HOME} features={FEATURES} />
+      <GetInTouchSection home={HOME} />
+      <ProductsSection home={HOME} products={PRODUCTS} />
+      <FrameworksSection home={HOME} />
       <IDESection />
       <JumpSection />
       <CoveredSection />

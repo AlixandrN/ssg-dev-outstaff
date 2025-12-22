@@ -1,7 +1,7 @@
 import enTranslations from "@/app/locales/en.json";
 import { EFrameworkCard } from "../constants";
 
-export const getDescriptionById = (
+export const getFrameworkDescriptionById = (
   type: EFrameworkCard
 ): keyof typeof enTranslations.HOME => {
   switch (type) {

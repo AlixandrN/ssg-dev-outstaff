@@ -11,12 +11,6 @@ export type TProductCard = {
   advantages: string[];
 };
 
-export type TFrameworkCard = {
-  id: string;
-  onClick: VoidFunction;
-  isFullMode?: boolean;
-};
-
 export type TProduct = {
   id: string;
   title: string;
@@ -33,3 +27,9 @@ export interface IData {
   FEATURES: string[];
   PRODUCTS: TProduct[];
 }
+
+export type TFrameworkCard = {
+  home: Record<string, string>;
+  id: string;
+  isFullMode?: boolean;
+};

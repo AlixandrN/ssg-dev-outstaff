@@ -6,7 +6,7 @@ import { Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { TFrameworkCard, TProductCard } from "@/lib/types";
+import { TFrameworkCard, TProduct } from "@/lib/types";
 import { ProductCard } from "../cards/ProductCard";
 import { FrameworkCard } from "../cards/FrameworkCard";
 import { SwiperNavigation } from "./SwiperNavigation";
@@ -18,7 +18,7 @@ interface IBaseProps {
 
 type TProductSwiper = IBaseProps & {
   variant: "product";
-  list: TProductCard[];
+  list: TProduct[];
 };
 
 type TFrameworkSwiper = IBaseProps & {

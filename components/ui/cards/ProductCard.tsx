@@ -1,12 +1,13 @@
-import { useTranslation } from "react-i18next";
-import { TProductCard } from "@/lib/types";
+import { TProduct } from "@/lib/types";
 import { currency } from "@/lib/constants";
 import { ProductCardItem } from "./ProductCardItem";
 import { ButtonIcon } from "../buttons/ButtonIcon";
 
-export const ProductCard = (props: TProductCard) => {
-  const { title, onClick, bage, price, advantages } = props;
-  const { t: tHome } = useTranslation("HOME");
+export const ProductCard = (props: TProduct) => {
+  const { title, bage, price, advantages } = props;
+  const onClick = () => {
+    console.log("clicked");
+  };
   return (
     <div
       className={`bg-base-100 shadow-xl flex flex-col p-4 md:p-6 rounded-xl group h-[400px]`}
@@ -30,7 +31,7 @@ export const ProductCard = (props: TProductCard) => {
         <div className="mt-6">
           <ButtonIcon
             onClick={onClick}
-            label={tHome("START_PROJECT")}
+            label={"START_PROJECT"}
             icon={"arrow-right"}
           />
         </div>

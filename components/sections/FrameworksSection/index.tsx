@@ -1,14 +1,13 @@
-"use client";
 import { SwiperBox, TSwiperBox } from "@/components/ui/SwiperBox";
 import { EFrameworkCard } from "@/lib/constants";
-import { TFrameworkCard } from "@/lib/types";
+import { IData, TFrameworkCard } from "@/lib/types";
 
-export const FrameworksSection = () => {
+export const FrameworksSection = ({ home }: { home: IData["HOME"] }) => {
   const list: TFrameworkCard[] = Array.from(
     Object.values(EFrameworkCard),
     (item) => ({
       id: item,
-      onClick: () => console.log(`Clicked: ${item}`),
+      home,
     })
   );
 
