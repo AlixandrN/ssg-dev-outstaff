@@ -2,11 +2,11 @@ import { useState } from "react";
 import { TCustomerData } from "@/lib/constants";
 import { createCustomer } from "@/app/actions/createCustomer";
 
-export const useCustomerForm = (customerData: TCustomerData) => {
+export const useCustomerForm = () => {
   const [isPending, setPending] = useState(false);
   const [isSuccess, setSuccess] = useState(true);
 
-  const handleCustomer = async () => {
+  const handleCustomer = async (customerData: TCustomerData) => {
     setPending(true);
 
     try {

@@ -3,8 +3,8 @@ import { prisma } from "./lib/prisma";
 async function main() {
   const user = await prisma.user.create({
     data: {
-      name: "Alice6",
-      email: "alice6@prisma.io",
+      name: "Alice",
+      email: "alice100@prisma.io",
     },
   });
   console.log(user);
