@@ -19,7 +19,7 @@ export const TestButton = () => {
   ) : (
     <div>
       TestButton
-      <ButtonIcon label="TEST DB" onClick={handleClick} />
+      <ButtonIcon label="TEST DB2" onClick={handleClick} />
       {/* <ol className="list-decimal list-inside font-[family-name:var(--font-geist-sans)]">
         {users.map((user) => (
           <li key={user.id} className="mb-2">
