@@ -5,6 +5,7 @@ import { ButtonIcon } from "../ui/buttons/ButtonIcon";
 import { InputLabel } from "./InputLabel";
 import { validateForm } from "./validateForm";
 import { TCustomerData } from "@/lib/constants";
+import { useCustomerForm } from "@/hooks/useCustomerForm";
 
 export type TCustomerErrors = Partial<TCustomerData>;
 
@@ -15,7 +16,7 @@ export const CustomerForm = () => {
     message: "",
   });
   const [errors, setErrors] = useState<TCustomerErrors>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { isPending, handleCustomer } = useCustomerForm();
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -24,20 +25,20 @@ export const CustomerForm = () => {
       setErrors(validateErrors);
       return;
     }
-    setIsSubmitting(true);
+    handleCustomer(customerData);
 
-    try {
-      // fetch...
-      await new Promise((resolve) => setTimeout(resolve, 3000));
-      console.log("customerData:", customerData);
-    } catch (error) {
-      console.error("error:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
+    // setIsSubmitting(true);
+    // try {
+    //   await new Promise((resolve) => setTimeout(resolve, 3000));
+    //   console.log("customerData:", customerData);
+    // } catch (error) {
+    //   console.error("error:", error);
+    // } finally {
+    //   setIsSubmitting(false);
+    // }
   };
 
-  const handleCustomerData = (value: string, id: keyof TCustomerData) => {
+  const handleData = (value: string, id: keyof TCustomerData) => {
     setCustomerData({ ...customerData, [id]: value });
     if (errors[id]) {
       setErrors({ ...errors, [id]: undefined });
@@ -59,21 +60,21 @@ export const CustomerForm = () => {
         id="name"
         value={customerData.name}
         label="Полное имя *"
-        setValue={handleCustomerData}
+        setValue={handleData}
         errorMessage={errors.name}
       />
       <InputLabel
         id="email"
         value={customerData.email}
         label="Email адрес *"
-        setValue={handleCustomerData}
+        setValue={handleData}
         errorMessage={errors.email}
       />
       <InputLabel
         id="message"
         value={customerData.message}
         label="Ваше сообщение *"
-        setValue={handleCustomerData}
+        setValue={handleData}
         errorMessage={errors.message}
         isTextareaMode
       />
@@ -82,7 +83,7 @@ export const CustomerForm = () => {
         label={"Send Message"}
         icon={"arrow-right"}
         className="w-full"
-        isSubmitting={isSubmitting}
+        isSubmitting={isPending}
       />
     </form>
   );
