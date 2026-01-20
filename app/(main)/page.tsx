@@ -13,6 +13,13 @@ export default async function HomePage() {
   const { HOME, FEATURES, PRODUCTS } = await getLocalData<IData>("app-data");
   return (
     <div className="mx-auto flex flex-col md:gap-5 w-full justify-around ">
+
+      {process.env.DATABASE_URL ? (
+        <p style={{ color: "green" }}>DATABASE_URL - OK</p>
+      ) : (
+        <p style={{ color: "red" }}> DATABASE_URL - NOT</p>
+      )}
+      
       <FirstSection home={HOME} features={FEATURES} />
       <GetInTouchSection home={HOME} />
       <ProductsSection home={HOME} products={PRODUCTS} />
