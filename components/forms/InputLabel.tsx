@@ -1,5 +1,5 @@
+import { ChangeEvent, FocusEvent } from "react";
 import { TCustomerData } from "@/lib/constants";
-import React, { ChangeEvent } from "react";
 
 type TLabelInput = {
   id: keyof TCustomerData;
@@ -8,6 +8,7 @@ type TLabelInput = {
   setValue: (value: string, id: keyof TCustomerData) => void;
   errorMessage?: string;
   isTextareaMode?: boolean;
+  onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
 export const InputLabel = ({
@@ -17,9 +18,10 @@ export const InputLabel = ({
   setValue,
   errorMessage,
   isTextareaMode,
+  onFocus,
 }: TLabelInput) => {
   const handleChange = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const newValue = event.target.value;
     setValue(newValue, id);
@@ -54,6 +56,7 @@ export const InputLabel = ({
             aria-invalid={!!errorMessage}
             aria-describedby={errorMessage ? "label-error" : "label-hint"}
             placeholder={label}
+            onFocus={onFocus}
           />
         ) : (
           <input
@@ -68,6 +71,7 @@ export const InputLabel = ({
             aria-invalid={!!errorMessage}
             aria-describedby={"label-error"}
             placeholder={label}
+            onFocus={onFocus}
           />
         );
       })()}
