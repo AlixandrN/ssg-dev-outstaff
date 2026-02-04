@@ -6,10 +6,12 @@ import { InputLabel } from "./InputLabel";
 import { validateForm } from "./validateForm";
 import { TCustomerData } from "@/lib/constants";
 import { useCustomerForm } from "@/hooks/useCustomerForm";
+import { usePreventViewportShift } from "@/hooks/usePreventViewportShift";
 
 export type TCustomerErrors = Partial<TCustomerData>;
 
 export const CustomerForm = () => {
+  usePreventViewportShift();
   const [customerData, setCustomerData] = useState<TCustomerData>({
     name: "",
     email: "",
