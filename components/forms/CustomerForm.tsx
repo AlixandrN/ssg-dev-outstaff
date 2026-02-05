@@ -45,13 +45,12 @@ export const CustomerForm = ({
 
   return (
     <form
-      onSubmit={handleSubmit}
-      // className="max-w-md p-6 bg-white md:rounded-lg shadow-md w-full md:w-auto h-[calc(100vh-200px)] md:h-auto"
       className={`max-w-md p-6 bg-white md:rounded-lg shadow-md w-full md:w-1/2
-        ${isPageMode ? "h-full" : "h-auto"}  `}
+      ${isPageMode ? "h-full" : "h-auto"}  `}
       noValidate
       aria-labelledby="form-title"
       aria-describedby="form-description"
+      onSubmit={handleSubmit}
       // Добавляем обработчик клика для закрытия клавиатуры при тапе вне инпута
       onClick={(event) => {
         if (
