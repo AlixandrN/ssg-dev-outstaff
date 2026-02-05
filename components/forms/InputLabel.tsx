@@ -1,5 +1,6 @@
-import { ChangeEvent, FocusEvent } from "react";
+import { ChangeEvent } from "react";
 import { TCustomerData } from "@/lib/constants";
+import { handleMobileFocus } from "@/lib/utils/mobileFormUtils";
 
 type TLabelInput = {
   id: keyof TCustomerData;
@@ -8,7 +9,6 @@ type TLabelInput = {
   setValue: (value: string, id: keyof TCustomerData) => void;
   errorMessage?: string;
   isTextareaMode?: boolean;
-  onFocus?: (event: FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
 };
 
 export const InputLabel = ({
@@ -18,7 +18,6 @@ export const InputLabel = ({
   setValue,
   errorMessage,
   isTextareaMode,
-  onFocus,
 }: TLabelInput) => {
   const handleChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -56,7 +55,7 @@ export const InputLabel = ({
             aria-invalid={!!errorMessage}
             aria-describedby={errorMessage ? "label-error" : "label-hint"}
             placeholder={label}
-            onFocus={onFocus}
+            onFocus={handleMobileFocus}
           />
         ) : (
           <input
@@ -71,7 +70,7 @@ export const InputLabel = ({
             aria-invalid={!!errorMessage}
             aria-describedby={"label-error"}
             placeholder={label}
-            onFocus={onFocus}
+            onFocus={handleMobileFocus}
           />
         );
       })()}

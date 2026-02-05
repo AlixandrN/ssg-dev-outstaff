@@ -12,10 +12,10 @@ const ContactPage = async () => {
       gap-2 md:gap-5 
       "
     >
-      <h1 className="text-xl md:text-3xl text-center font-bold">
+      {/* <h1 className="text-xl md:text-3xl text-center font-bold">
         {GET_IN_TOUCH}
-      </h1>
-      <CustomerForm />
+      </h1> */}
+      <CustomerForm isPageMode title={GET_IN_TOUCH} />
     </div>
   );
 };
