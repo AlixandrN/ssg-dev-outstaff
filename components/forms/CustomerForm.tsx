@@ -45,8 +45,8 @@ export const CustomerForm = ({
 
   return (
     <form
-      className={`max-w-md p-6 bg-white md:rounded-lg shadow-md w-full md:w-1/2
-      ${isPageMode ? "h-full" : "h-auto"}  `}
+      className={` p-6 bg-white md:rounded-lg shadow-none md:shadow-md w-full md:w-1/2
+      ${isPageMode ? "min-h-[calc(100dvh-100px)] md:h-full" : "h-auto"}}  `}
       noValidate
       aria-labelledby="form-title"
       aria-describedby="form-description"
@@ -100,26 +100,23 @@ export const CustomerForm = ({
       {/* CSS for mobile */}
       <style jsx>{`
         @media (max-width: 768px) {
-          /* правильный размер шрифта для iOS */
           input,
           textarea {
             font-size: 16px !important;
           }
-          /* отступ снизу для формы, чтобы кнопка не перекрывалась клавиатурой */
+
           form {
             padding-bottom: env(safe-area-inset-bottom, 20px);
+            /* Заменяем прыгающую высоту на стабильную отрисовку */
+            display: flex;
+            flex-direction: column;
+            backface-visibility: hidden;
+            transform: translateZ(0);
           }
-          /* возможность скролла внутри */
+
           textarea {
-            max-height: 200px;
-            min-height: 100px;
-            resize: vertical;
-          }
-        }
-        @media (max-height: 700px) {
-          form {
-            height: auto !important;
-            min-height: calc(100vh - 200px);
+            min-height: 120px; /* Фиксируем минимум вместо calc */
+            resize: none;
           }
         }
       `}</style>
