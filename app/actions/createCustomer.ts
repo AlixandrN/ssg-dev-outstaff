@@ -14,8 +14,8 @@ export async function createCustomer(customerData: TCustomerData) {
     });
     console.log("node customer:", customer);
     return { success: true, data: customer };
-  } catch (error) {
-    console.log("node error:", error);
-    return { success: false, data: undefined };
+  } catch {
+    console.log("*** node error ***");
+    return { success: false, serverErrors: { server: "DB_PROBLEM" } };
   }
 }

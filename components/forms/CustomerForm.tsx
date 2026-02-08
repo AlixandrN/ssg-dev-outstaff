@@ -8,7 +8,7 @@ import { TCustomerData } from "@/lib/constants";
 import { useCustomerForm } from "@/hooks/useCustomerForm";
 import { useHandleMobileFocus } from "@/hooks/useHandleMobileFocus";
 
-export type TCustomerErrors = Partial<TCustomerData>;
+export type TCustomerErrors = Partial<TCustomerData> & { server?: string };
 
 export const CustomerForm = ({
   isPageMode,
@@ -24,6 +24,7 @@ export const CustomerForm = ({
   });
   const [errors, setErrors] = useState<TCustomerErrors>({});
   const { isPending, handleCustomer } = useCustomerForm();
+  const [isModalOpen, setIsModalOpen] = useState(false);
   useHandleMobileFocus();
 
   const handleSubmit = async (event: FormEvent) => {
@@ -33,13 +34,28 @@ export const CustomerForm = ({
       setErrors(validateErrors);
       return;
     }
-    handleCustomer(customerData);
+    const result = await handleCustomer(customerData);
+    if (!result?.success && result?.serverErrors) {
+      setErrors((prev) => ({ ...prev, ...result.serverErrors }));
+      setIsModalOpen(true);
+      return;
+    }
+
+    if (result?.success) {
+      setCustomerData({
+        name: "",
+        email: "",
+        message: "",
+      });
+    }
+    setErrors({});
+    (document.activeElement as HTMLElement)?.blur();
   };
 
   const handleData = (value: string, id: keyof TCustomerData) => {
     setCustomerData({ ...customerData, [id]: value });
-    if (errors[id]) {
-      setErrors({ ...errors, [id]: undefined });
+    if (errors[id] || errors["server"]) {
+      setErrors({ ...errors, [id]: undefined, server: undefined });
     }
   };
 
@@ -120,6 +136,26 @@ export const CustomerForm = ({
           }
         }
       `}</style>
+
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/10 backdrop-blur-sm">
+          <div className="bg-white rounded-xl p-6 max-w-sm w-full shadow-2xl animate-in fade-in zoom-in duration-200">
+            <h2 className="text-xl font-bold text-red-600 mb-2">Упс! Ошибка</h2>
+            <p className="text-gray-600 mb-6">
+              {"Что-то пошло не так на сервере. Пожалуйста, попробуйте позже."}
+            </p>
+            <button
+              onClick={() => {
+                setErrors({ ...errors, server: undefined });
+                setIsModalOpen(false);
+              }}
+              className="w-full py-3 bg-red-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
+            >
+              Закрыть
+            </button>
+          </div>
+        </div>
+      )}
     </form>
   );
 };
