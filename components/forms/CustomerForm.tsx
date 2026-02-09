@@ -7,16 +7,24 @@ import { validateForm } from "./validateForm";
 import { TCustomerData } from "@/lib/constants";
 import { useCustomerForm } from "@/hooks/useCustomerForm";
 import { useHandleMobileFocus } from "@/hooks/useHandleMobileFocus";
+import { NotificationModal } from "../ui/modals/NotificationModal";
+import { TModalData } from "@/lib/types";
 
 export type TCustomerErrors = Partial<TCustomerData> & { server?: string };
+
+type TCustomerForm = {
+  isPageMode?: boolean;
+  title?: string;
+  successModalData: TModalData;
+  errorModalData: TModalData;
+};
 
 export const CustomerForm = ({
   isPageMode,
   title,
-}: {
-  isPageMode?: boolean;
-  title?: string;
-}) => {
+  errorModalData,
+  successModalData,
+}: TCustomerForm) => {
   const [customerData, setCustomerData] = useState<TCustomerData>({
     name: "",
     email: "",
@@ -35,9 +43,9 @@ export const CustomerForm = ({
       return;
     }
     const result = await handleCustomer(customerData);
+    setIsModalOpen(true);
     if (!result?.success && result?.serverErrors) {
       setErrors((prev) => ({ ...prev, ...result.serverErrors }));
-      setIsModalOpen(true);
       return;
     }
 
@@ -48,7 +56,7 @@ export const CustomerForm = ({
         message: "",
       });
     }
-    setErrors({});
+
     (document.activeElement as HTMLElement)?.blur();
   };
 
@@ -59,6 +67,11 @@ export const CustomerForm = ({
     }
   };
 
+  const onCloseModal = () => {
+    setErrors({});
+    setIsModalOpen(false);
+  };
+
   return (
     <form
       className={` p-6 bg-white md:rounded-lg shadow-none md:shadow-md w-full md:w-1/2
@@ -67,7 +80,6 @@ export const CustomerForm = ({
       aria-labelledby="form-title"
       aria-describedby="form-description"
       onSubmit={handleSubmit}
-      // Добавляем обработчик клика для закрытия клавиатуры при тапе вне инпута
       onClick={(event) => {
         if (
           (event.target as HTMLElement).tagName !== "INPUT" &&
@@ -109,7 +121,7 @@ export const CustomerForm = ({
         type="submit"
         label={"Send Message"}
         icon={"arrow-right"}
-        className="w-full mt-6"
+        className="btn-green w-full mt-6"
         isSubmitting={isPending}
       />
 
@@ -131,31 +143,17 @@ export const CustomerForm = ({
           }
 
           textarea {
-            min-height: 120px; /* Фиксируем минимум вместо calc */
+            min-height: 120px;
             resize: none;
           }
         }
       `}</style>
-
-      {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/10 backdrop-blur-sm">
-          <div className="bg-white rounded-xl p-6 max-w-sm w-full shadow-2xl animate-in fade-in zoom-in duration-200">
-            <h2 className="text-xl font-bold text-red-600 mb-2">Упс! Ошибка</h2>
-            <p className="text-gray-600 mb-6">
-              {"Что-то пошло не так на сервере. Пожалуйста, попробуйте позже."}
-            </p>
-            <button
-              onClick={() => {
-                setErrors({ ...errors, server: undefined });
-                setIsModalOpen(false);
-              }}
-              className="w-full py-3 bg-red-900 text-white rounded-lg font-medium hover:bg-gray-800 transition-colors"
-            >
-              Закрыть
-            </button>
-          </div>
-        </div>
-      )}
+      <NotificationModal
+        isOpen={isModalOpen}
+        onClose={onCloseModal}
+        data={errors.server ? errorModalData : successModalData}
+        isError={!!errors.server}
+      />
     </form>
   );
 };

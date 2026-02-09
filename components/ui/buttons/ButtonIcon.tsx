@@ -26,15 +26,15 @@ export const ButtonIcon = ({
   return (
     <button
       type={type}
-      className={`btn btn-green text-primary-content ${className}`}
+      className={`btn  text-primary-content ${className}`}
       onClick={onClick}
       disabled={isSubmitting || disabled}
       aria-label={
         isSubmitting
           ? "The form is being submitted, please wait"
           : label
-          ? undefined
-          : `${icon} button`
+            ? undefined
+            : `${icon} button`
       }
       {...props}
     >
