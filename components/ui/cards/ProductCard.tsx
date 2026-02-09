@@ -10,7 +10,7 @@ export const ProductCard = (props: TProduct) => {
   };
   return (
     <div
-      className={`bg-base-100 shadow-xl flex flex-col p-4 md:p-6 rounded-xl group h-[400px]`}
+      className={`bg-base-100 shadow-xl flex flex-col p-4 md:p-6 rounded-xl group h-100`}
     >
       <div className="card-body relative">
         {bage && (
@@ -33,6 +33,7 @@ export const ProductCard = (props: TProduct) => {
             onClick={onClick}
             label={"START_PROJECT"}
             icon={"arrow-right"}
+            className="btn-green"
           />
         </div>
       </div>

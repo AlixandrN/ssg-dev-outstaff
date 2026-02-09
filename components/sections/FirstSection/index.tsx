@@ -19,7 +19,11 @@ export const FirstSection = ({
     >
       <h1 className={`${fontStyle} px-4`}>{WE_CREATE}</h1>
       <Typewriter list={features} fontStyle={fontStyle} />
-      <ButtonIcon label={"contuct us"} icon={"arrow-right"} />
+      <ButtonIcon
+        label={"contuct us"}
+        icon={"arrow-right"}
+        className="btn-green"
+      />
     </section>
   );
 };

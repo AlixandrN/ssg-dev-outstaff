@@ -3,8 +3,10 @@ import { getLocalData } from "@/lib/data-utils/getLocalData";
 import { IData } from "@/lib/types";
 
 const ContactPage = async () => {
-  const { HOME } = await getLocalData<IData>("app-data");
+  const { HOME, MODALS } = await getLocalData<IData>("app-data");
   const { GET_IN_TOUCH } = HOME;
+  const { GET_IN_TOUCH_SUCCESS, GET_IN_TOUCH_ERROR } = MODALS;
+
   return (
     <div
       className="mx-auto flex flex-col  w-full
@@ -12,10 +14,12 @@ const ContactPage = async () => {
       gap-2 md:gap-5 
       "
     >
-      {/* <h1 className="text-xl md:text-3xl text-center font-bold">
-        {GET_IN_TOUCH}
-      </h1> */}
-      <CustomerForm isPageMode title={GET_IN_TOUCH} />
+      <CustomerForm
+        isPageMode
+        title={GET_IN_TOUCH}
+        successModalData={GET_IN_TOUCH_SUCCESS}
+        errorModalData={GET_IN_TOUCH_ERROR}
+      />
     </div>
   );
 };

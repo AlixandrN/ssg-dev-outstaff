@@ -8,9 +8,16 @@ export type TProduct = {
   home: Record<string, string>;
 };
 
+export type TModalData = {
+  title: string;
+  message: string;
+  closeButtonMessage: string;
+};
+
 export interface IData {
   COMMON: Record<string, string>;
   HOME: Record<string, string>;
+  MODALS: Record<string, TModalData>;
   FEATURES: string[];
   PRODUCTS: TProduct[];
 }
