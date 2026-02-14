@@ -4,12 +4,13 @@ import { prisma } from "@/lib/prisma";
 import { TCustomerData } from "@/lib/constants";
 
 export async function createCustomer(customerData: TCustomerData) {
-  const { name, email } = customerData;
+  const { name, email, message } = customerData;
   try {
     const customer = await prisma.user.create({
       data: {
         name,
         email,
+        message,
       },
     });
     console.log("node customer:", customer);

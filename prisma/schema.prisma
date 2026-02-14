@@ -1,8 +1,5 @@
 generator client {
-  // provider = "prisma-client"
   provider = "prisma-client-js"
-  // engineType = "library"
-  // output     = "../app/generated/prisma"
 }
 
 datasource db {
@@ -13,4 +10,6 @@ model User {
   id    Int    @id @default(autoincrement())
   email String @unique
   name  String
+  message   String?
+  createdAt DateTime @default(now()) @map("created_at")
 }
