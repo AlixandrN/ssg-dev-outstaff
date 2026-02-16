@@ -20,7 +20,10 @@ export type TIcon =
   | "heart"
   | "star";
 
-export const ICONS: Record<TIcon, (className?: string) => ReactElement> = {
+export const ICONS: Record<
+  TIcon,
+  (className?: string, strokeWidth?: number) => ReactElement
+> = {
   spinner: (className = "h-6 w-6") => (
     <svg
       className={`animate-spin -ml-1 mr-3 text-white ${className}`}
@@ -112,7 +115,7 @@ export const ICONS: Record<TIcon, (className?: string) => ReactElement> = {
     </svg>
   ),
 
-  check: (className = "h-6 w-6") => (
+  check: (className = "h-6 w-6", strokeWidth = 4) => (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className={className}
@@ -123,7 +126,7 @@ export const ICONS: Record<TIcon, (className?: string) => ReactElement> = {
       <path
         strokeLinecap="round"
         strokeLinejoin="round"
-        strokeWidth="2"
+        strokeWidth={strokeWidth}
         d="M5 13l4 4L19 7"
       />
     </svg>

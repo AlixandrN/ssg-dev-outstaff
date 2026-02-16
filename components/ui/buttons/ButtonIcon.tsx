@@ -14,7 +14,7 @@ interface IButtonIcon extends ComponentPropsWithoutRef<"button"> {
 export const ButtonIcon = ({
   type = "button",
   label,
-  icon = "star",
+  icon,
   iconClassName = "h-4 w-4",
   className = "",
   onClick,
@@ -22,11 +22,15 @@ export const ButtonIcon = ({
   isSubmitting,
   ...props
 }: IButtonIcon) => {
-  const IconComponent = isSubmitting ? ICONS["spinner"] : ICONS[icon];
+  const IconComponent = isSubmitting
+    ? ICONS["spinner"]
+    : icon
+      ? ICONS[icon]
+      : null;
   return (
     <button
       type={type}
-      className={`btn  text-primary-content ${className}`}
+      className={`${label ? "btn text-primary-content" : ""} ${className} cursor-pointer`}
       onClick={onClick}
       disabled={isSubmitting || disabled}
       aria-label={
@@ -41,7 +45,7 @@ export const ButtonIcon = ({
       {(() => {
         return isSubmitting ? "Submitting the form..." : label ? label : null;
       })()}
-      {IconComponent(iconClassName)}
+      {IconComponent && IconComponent(iconClassName)}
     </button>
   );
 };
