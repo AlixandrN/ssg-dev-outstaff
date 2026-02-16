@@ -36,19 +36,33 @@ export const NotificationModal = ({
         onClick={(event) => event.stopPropagation()}
       >
         <h2
-          className={`text-xl font-bold mb-2 ${isError ? "text-red-600" : "text-green-600"}`}
+          className={`text-xl text-center font-bold mb-2 ${isError ? "text-red-600" : "text-green-600"}`}
         >
           {title}
         </h2>
-        <p className="text-gray-500 mb-8 leading-relaxed">{message}</p>
-        <ButtonIcon
-          onClick={onClose}
-          label={closeButtonMessage}
-          icon={"close"}
-          className="w-full py-4 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all active:scale-95"
-        />
+        <p className="text-gray-500 text-center mb-8 leading-relaxed">
+          {message}
+        </p>
+
+        <div className="flex justify-center">
+          {isError ? (
+            <ButtonIcon
+              onClick={onClose}
+              label={closeButtonMessage}
+              className="w-full py-4 bg-gray-900 text-white rounded-xl font-semibold hover:bg-gray-800 transition-all active:scale-95"
+            />
+          ) : (
+            <ButtonIcon
+              onClick={onClose}
+              icon={"check"}
+              iconClassName="h-6 w-6 text-white"
+              className="flex items-center justify-center w-12 h-12 rounded-full bg-green-600 hover:bg-green-700 transition-transform active:scale-95 shadow-md"
+            />
+          )}
+        </div>
       </div>
     </div>,
+
     document.body,
   );
 };
