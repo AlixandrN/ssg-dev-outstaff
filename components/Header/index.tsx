@@ -1,5 +1,7 @@
 "use client";
+
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/useScroll";
 import { Logo } from "./Logo";
 import { NavDesktop } from "./NavDesktop";
@@ -7,8 +9,10 @@ import { BurgerButton } from "./BurgerButton";
 import { NavMobile } from "./NavMobile";
 
 export const Header = () => {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isScrolled = useScroll(80);
+  const isHomePage = pathname === "/";
 
   // Scroll lock when mobile menu is open
   useEffect(() => {
@@ -34,13 +38,16 @@ export const Header = () => {
       <header
         className={`
         fixed top-0 w-full transition-all duration-500 z-50
-        ${
-          isScrolled
-            ? "backdrop-blur-sm shadow-lg py-3"
-            : "bg-linear-to-r from-primary to-secondary-dark text-primary-content h-[100px] flex items-center"
-        }
-        ${isMobileMenuOpen ? "bg-primary text-primary-content" : ""}
-      `}
+      ${
+        isHomePage
+          ? isScrolled
+            ? "backdrop-blur-sm bg-primary/70 shadow-lg py-3"
+            : "h-25 flex items-center text-primary-content"
+          : "bg-linear-to-r from-primary to-secondary-dark text-primary-content h-25 flex items-center"
+      }
+
+    ${isMobileMenuOpen ? "bg-primary text-primary-content" : ""}
+  `}
       >
         <div className="container px-4">
           <div className="flex items-center justify-between">

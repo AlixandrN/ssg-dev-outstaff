@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CoveredSection } from "@/components/sections/CoveredSection";
 import { IDESection } from "@/components/sections/IDESection";
 import { JumpSection } from "@/components/sections/JumpSection";
@@ -14,7 +15,31 @@ export default async function HomePage() {
     await getLocalData<IData>("app-data");
   return (
     <div className="mx-auto flex flex-col md:gap-5 w-full justify-around ">
-      <FirstSection home={HOME} features={FEATURES} />
+      <Image
+        src="/images/bg-desktop.webp"
+        alt="Web development"
+        fill
+        priority
+        className="object-cover hidden md:block"
+        sizes="100vw"
+      />
+
+      <Image
+        src="/images/bg-mobile.webp"
+        alt="Web development"
+        fill
+        priority
+        className="object-cover md:hidden"
+        sizes="100vw"
+      />
+
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-linear-to-r from-primary/85 via-primary/85 to-secondary/75 z-10" />
+
+      <div className="relative z-20">
+        <FirstSection home={HOME} features={FEATURES} />
+      </div>
+
       <GetInTouchSection home={HOME} modals={MODALS} />
       <ProductsSection home={HOME} products={PRODUCTS} />
       <FrameworksSection home={HOME} />

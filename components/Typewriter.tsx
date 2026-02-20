@@ -37,10 +37,10 @@ export const Typewriter = ({
         setView((prev) =>
           isDeleting
             ? prev.slice(0, -1)
-            : currentString.slice(0, prev.length + 1)
+            : currentString.slice(0, prev.length + 1),
         );
       },
-      isDeleting ? deleteSpeed : printSpeed
+      isDeleting ? deleteSpeed : printSpeed,
     );
     return () => clearTimeout(timeout);
   }, [
@@ -54,10 +54,10 @@ export const Typewriter = ({
   ]);
 
   return (
-    <div className={`${fontStyle} px-4 min-h-[60px] flex items-center`}>
+    <div className={`${fontStyle} min-h-15 flex items-center`}>
       <span className="animate-smooth-fade-in inline-block">
         {view}
-        <span className="animate-blink inline-block h-[1em] w-[1px] bg-current ml-1 align-middle" />
+        <span className="animate-blink inline-block h-[1em] w-px bg-current ml-1 align-middle" />
       </span>
     </div>
   );
