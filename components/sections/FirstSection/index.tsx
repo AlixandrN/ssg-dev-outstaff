@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { Typewriter } from "@/components/Typewriter";
 import { ButtonIcon } from "@/components/ui/buttons/ButtonIcon";
 import { IData } from "@/lib/types";
+import { EPublicRoutes } from "@/lib/constants";
 
 export const FirstSection = ({
   features,
@@ -23,16 +25,18 @@ export const FirstSection = ({
         items-start
       "
     >
-      <div className="px-4 *:last:ml-5 *:last:mt-5">
+      <div className="px-4">
         <h1 className={fontStyle}>{WE_CREATE}</h1>
 
         <Typewriter list={features} fontStyle={fontStyle} />
 
-        <ButtonIcon
-          label="contact us"
-          icon="arrow-right"
-          className="btn-green"
-        />
+        <Link href={EPublicRoutes.CONTACT} className="mt-10 inline-block">
+          <ButtonIcon
+            label="contact us"
+            icon="arrow-right"
+            className="btn-green"
+          />
+        </Link>
       </div>
     </section>
   );
