@@ -27,3 +27,7 @@ export type TFrameworkCard = {
   id: string;
   isFullMode?: boolean;
 };
+
+export enum EButtonLabel {
+  MORE_DETAILS = "Подробнее",
+}
