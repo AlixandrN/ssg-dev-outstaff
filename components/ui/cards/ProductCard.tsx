@@ -1,16 +1,13 @@
-import { TProduct } from "@/lib/types";
+import { EButtonLabel, TProduct } from "@/lib/types";
 import { currency } from "@/lib/constants";
 import { ProductCardItem } from "./ProductCardItem";
-import { ButtonIcon } from "../buttons/ButtonIcon";
+import Link from "next/link";
 
 export const ProductCard = (props: TProduct) => {
-  const { title, bage, price, advantages } = props;
-  const onClick = () => {
-    console.log("clicked");
-  };
+  const { id, title, bage, price, advantages } = props;
   return (
     <div
-      className={`bg-base-100 shadow-xl flex flex-col p-4 md:p-6 rounded-xl group h-100`}
+      className={`bg-white shadow-xl flex flex-col p-4 md:p-6 rounded-xl group h-100`}
     >
       <div className="card-body relative">
         {bage && (
@@ -29,12 +26,9 @@ export const ProductCard = (props: TProduct) => {
         </ul>
 
         <div className="mt-6">
-          <ButtonIcon
-            onClick={onClick}
-            label={"START_PROJECT"}
-            icon={"arrow-right"}
-            className="btn-green"
-          />
+          <Link href={`/${id}`} className="btn btn-green">
+            {EButtonLabel.MORE_DETAILS}
+          </Link>
         </div>
       </div>
     </div>
