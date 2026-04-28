@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 
 export const Typewriter = ({
@@ -54,7 +55,9 @@ export const Typewriter = ({
   ]);
 
   return (
-    <div className={`${fontStyle} min-h-15 flex items-center`}>
+    <div
+      className={`${fontStyle} min-h-15 flex items-center justify-start w-full`}
+    >
       <span className="animate-smooth-fade-in inline-block">
         {view}
         <span className="animate-blink inline-block h-[1em] w-px bg-current ml-1 align-middle" />
