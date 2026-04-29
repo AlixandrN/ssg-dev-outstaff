@@ -75,8 +75,10 @@ export const AdaptiveBox = () => {
                 flex: state === "mobile" ? "0 0 6px" : "1 1 0%",
                 padding: state === "mobile" ? "0px" : "8px",
                 backgroundColor:
-                  state === "mobile" ? "#6b46ff" : "rgba(255, 255, 255, 0)", // to do colors
-                borderColor: "#6b46ff", // to do colors
+                  state === "mobile"
+                    ? "var(--brand-blue)"
+                    : "var(--transparent)",
+                borderColor: "var(--brand-blue)",
               }}
               className="border-2 rounded-md flex flex-col justify-center overflow-hidden w-full mx-auto"
             >

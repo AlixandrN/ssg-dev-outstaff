@@ -24,7 +24,7 @@ export const NavMobile = ({
             <Link
               key={item}
               href={EPublicRoutes[item as keyof typeof EPublicRoutes]}
-              className="hover:text-blue-600 transition-colors duration-200"
+              className="text-gray-800 transition-colors duration-200"
               onClick={() => removeBurgerMenu()}
             >
               {item}
