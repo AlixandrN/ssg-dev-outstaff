@@ -1,11 +1,15 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake, bumblebee;
+  themes:
+    light --default,
+    dark --prefersdark,
+    cupcake,
+    bumblebee;
   root: ":root";
-  include: ;
-  exclude: ;
-  prefix: ;
+  include:;
+  exclude:;
+  prefix:;
   logs: true;
 }
 @import "tw-animate-css";
@@ -101,6 +105,8 @@
 }
 
 :root {
+  --brand-blue: #298ae6;
+  --transparent: oklch(100% 0 0 / 0);
   --c-green: oklch(0.754 0.146 155.8);
   --c-green-hover: oklch(0.68 0.146 155.8);
   --radius: 0.625rem;
@@ -230,5 +236,5 @@ html {
 }
 
 .section-style {
-  @apply relative w-full md:px-8 flex gap-2 ;
+  @apply relative w-full md:px-8 flex gap-2;
 }

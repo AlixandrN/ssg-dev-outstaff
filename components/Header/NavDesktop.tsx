@@ -9,7 +9,7 @@ export const NavDesktop = () => {
         <Link
           key={item}
           href={EPublicRoutes[item as keyof typeof EPublicRoutes]}
-          className="text-white hover:text-blue-600 transition-colors duration-200"
+          className="hover:[text-shadow:0_0_0.65px_currentColor] transition-all duration-200"
         >
           {item}
         </Link>
