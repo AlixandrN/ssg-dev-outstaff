@@ -22,12 +22,14 @@ export const FirstSection = ({
 
           <Typewriter list={features} fontStyle={fontStyle} />
 
-          <Link href={EPublicRoutes.CONTACT} className="mt-2 inline-block">
+          <Link
+            href={EPublicRoutes.CONTACT}
+            className="mt-8 lg:mt-2 inline-block self-center lg:self-start"
+          >
             <ButtonIcon
-              label="contact us"
+              label="Связаться с нами"
               icon="arrow-right"
-              // className="btn-primary"
-              className="btn bg-[#4a2ec2] hover:bg-[#3a2299] text-white border-none" // to do colors
+              className="btn bg-[var(--brand-blue)] hover:bg-[var(--brand-blue-hover)] text-white border-none"
             />
           </Link>
         </div>

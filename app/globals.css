@@ -105,7 +105,8 @@
 }
 
 :root {
-  --brand-blue: #298ae6;
+  --brand-blue: oklch(58.83% 0.215 259.02);
+  --brand-blue-hover: oklch(52.29% 0.21 264.05);
   --transparent: oklch(100% 0 0 / 0);
   --c-green: oklch(0.754 0.146 155.8);
   --c-green-hover: oklch(0.68 0.146 155.8);
