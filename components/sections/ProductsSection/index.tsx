@@ -1,5 +1,5 @@
-import { SwiperBox } from "@/components/ui/SwiperBox";
 import { IData } from "@/lib/types";
+import { SwiperProductsBox } from "./SwiperProductsBox";
 
 export const ProductsSection = ({
   home,
@@ -13,7 +13,7 @@ export const ProductsSection = ({
   return (
     <section className="section-style flex-col">
       <h1 className="text-3xl font-bold">{GREATE_DEALS}</h1>
-      <SwiperBox variant="product" list={products} />
+      <SwiperProductsBox list={products} />
     </section>
   );
 };
