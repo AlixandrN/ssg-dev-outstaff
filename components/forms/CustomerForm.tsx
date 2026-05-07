@@ -74,8 +74,7 @@ export const CustomerForm = ({
 
   return (
     <form
-      className={` p-6 bg-white md:rounded-lg shadow-none md:shadow-md w-full md:w-1/2
-      ${isPageMode ? "min-h-[calc(100dvh-100px)] md:h-full" : "h-auto"}}  `}
+      className={` p-6 bg-white md:rounded-lg shadow-none md:shadow-md w-full md:w-1/2`}
       noValidate
       aria-labelledby="form-title"
       aria-describedby="form-description"
@@ -91,7 +90,7 @@ export const CustomerForm = ({
     >
       <h1
         id="form-title"
-        className={`text-xl font-bold ${isPageMode ? "mb-10" : "mb-2"}  text-gray-800`}
+        className={`text-xl font-bold ${isPageMode ? "mb-2 lg:mb-8" : "mb-2"}  text-gray-800`}
       >
         {title ?? "Форма обратной связи"}
       </h1>

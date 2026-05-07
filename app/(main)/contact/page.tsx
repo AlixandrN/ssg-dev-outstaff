@@ -10,7 +10,7 @@ const ContactPage = async () => {
   return (
     <div
       className="mx-auto flex flex-col  w-full
-      justify-start items-center h-[calc(100vh-100px)]
+      justify-start items-center 
       gap-2 md:gap-5 
       "
     >
