@@ -10,16 +10,20 @@ const inter = Inter({
   preload: true,
   fallback: ["system-ui", "arial"],
 });
-// const montserrat = Montserrat({ subsets: ["latin", "cyrillic"] });
 
 export const metadata: Metadata = {
+  //  metadataBase: new URL("https://my-site.by"), to do add
   title: {
     default: "Brand SSG",
     template: "%s | Brand SSG", // for dynamic title
   },
-  description: "SSG Internationalized app",
+  description: "WEB DEV APP", // to do enh
   robots: "index, follow",
-  keywords: ["web", "dev", "web-dev"],
+  keywords: ["web", "dev", "web-dev"], // to do delete
+  icons: {
+    icon: "/favicon.ico", // стандарт
+    // apple: "/apple-touch-icon.png", // for iPhone
+  },
 };
 
 export default function RootLayout({

@@ -17,6 +17,7 @@ export type TModalData = {
 export interface IData {
   COMMON: Record<string, string>;
   HOME: Record<string, string>;
+  CONTACTS: Record<string, string>;
   MODALS: Record<string, TModalData>;
   FEATURES: string[];
   PRODUCTS: TProduct[];
