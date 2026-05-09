@@ -13,14 +13,19 @@ export const FirstSection = ({
   home: IData["HOME"];
 }) => {
   const fontStyle = "font-bold text-2xl md:text-[42px] text-gray-800";
-  const { WE_CREATE } = home;
+  const { WE_CREATE, DESCRIPTION_MAIN } = home;
   return (
     <section className="relative w-full min-h-[calc(100vh-100px)] lg:pt-25 px-4 flex justify-center z-20">
-      <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center lg:items-start justify-between">
-        <div className="w-full lg:w-1/2 flex flex-col items-start text-left">
-          <h1 className={`${fontStyle}`}>{WE_CREATE}</h1>
+      <div className="w-full max-w-7xl flex flex-col lg:flex-row items-center lg:items-start justify-between gap-2">
+        <div className="w-full lg:w-1/2 flex flex-col items-start text-left md:gap-6">
+          <div>
+            <h1 className={`${fontStyle}`}>{WE_CREATE}</h1>
+            <Typewriter list={features} fontStyle={fontStyle} />
+          </div>
 
-          <Typewriter list={features} fontStyle={fontStyle} />
+          <p className=" text-sm md:text-xl text-neutral max-w-2xl">
+            {DESCRIPTION_MAIN}
+          </p>
 
           <Link
             href={EPublicRoutes.CONTACT}
