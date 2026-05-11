@@ -34,7 +34,7 @@ export const FirstSection = ({
             <ButtonIcon
               label="Связаться с нами"
               icon="arrow-right"
-              className="btn bg-[var(--brand-blue)] hover:bg-[var(--brand-blue-hover)] text-white border-none"
+              className="btn bg-(--brand-blue) hover:bg-(--brand-blue-hover) text-white border-none"
             />
           </Link>
         </div>

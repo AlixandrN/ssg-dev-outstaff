@@ -1,3 +1,5 @@
+export const LOGO = "LOGO";
+
 export enum EPublicRoutes {
   HOME = "/",
   ABOUT = "about",
