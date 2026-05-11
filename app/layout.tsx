@@ -33,7 +33,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className={`${inter.className} bg-[rgb(249, 249, 249)]`}>
+      <body
+        className={`${inter.className} bg-linear-to-br from-gray-50 to-white`}
+      >
         <div className="flex flex-col min-h-screen">
           <Header />
 

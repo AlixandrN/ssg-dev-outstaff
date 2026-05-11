@@ -14,9 +14,22 @@ export type TModalData = {
   closeButtonMessage: string;
 };
 
+export interface Reason {
+  id: number;
+  title: string;
+  description: string;
+}
+
+export interface WhyChooseUsData {
+  TITLE: string;
+  SUBTITLE: string;
+  REASONS: Reason[];
+}
+
 export interface IData {
   COMMON: Record<string, string>;
   HOME: Record<string, string>;
+  WHY_CHOOSE_US: WhyChooseUsData;
   CONTACTS: Record<string, string>;
   MODALS: Record<string, TModalData>;
   FEATURES: string[];
