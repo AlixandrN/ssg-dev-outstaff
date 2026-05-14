@@ -36,7 +36,9 @@ export enum EFrameworkCard {
   VUE = "vue",
   NODE = "node",
   NEXT = "next",
+  JS = "javascript",
   TS = "typescript",
+  NEST = "nest",
 }
 
 export type TCustomerData = {

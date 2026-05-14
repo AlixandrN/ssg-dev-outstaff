@@ -20,9 +20,10 @@ export default async function HomePage() {
       <FirstSection home={HOME} features={FEATURES} />
       <WhyChooseUsSection whyChooseUsData={WHY_CHOOSE_US} />
 
+      <FrameworksSection />
+
       <GetInTouchSection home={HOME} modals={MODALS} />
       <ProductsSection home={HOME} products={PRODUCTS} />
-      <FrameworksSection home={HOME} />
       <IDESection />
       <CoveredSection />
       <ScrollAnimationBox rootMargin="50px" animationType="zoom" delay={200}>

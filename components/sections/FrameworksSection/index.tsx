@@ -1,25 +1,12 @@
-import { SwiperBox, TSwiperBox } from "@/components/ui/SwiperBox";
 import { EFrameworkCard } from "@/lib/constants";
-import { IData, TFrameworkCard } from "@/lib/types";
+import { SwiperFrameworksBox } from "./SwiperFrameworksBox";
 
-export const FrameworksSection = ({ home }: { home: IData["HOME"] }) => {
-  const list: TFrameworkCard[] = Array.from(
-    Object.values(EFrameworkCard),
-    (item) => ({
-      id: item,
-      home,
-    })
-  );
-
-  const props: TSwiperBox = {
-    variant: "framework",
-    list,
-    isLoopMode: true,
-  };
-
+export const FrameworksSection = () => {
+  const list: string[] = Array.from(Object.values(EFrameworkCard));
+  console.log("list: ", list);
   return (
     <section className="relative w-full md:px-8">
-      <SwiperBox {...props} />
+      <SwiperFrameworksBox list={list} />
     </section>
   );
 };
