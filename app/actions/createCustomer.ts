@@ -2,10 +2,12 @@
 
 import { prisma } from "@/lib/prisma";
 import { TCustomerData } from "@/lib/constants";
+import { sendTelegramNotification } from "./sendTelegramNotification";
 
 export async function createCustomer(customerData: TCustomerData) {
   const { name, email, message } = customerData;
   try {
+    sendTelegramNotification(customerData);
     const customer = await prisma.user.create({
       data: {
         name,
