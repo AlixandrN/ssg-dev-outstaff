@@ -36,12 +36,6 @@ export interface IData {
   PRODUCTS: TProduct[];
 }
 
-export type TFrameworkCard = {
-  home: Record<string, string>;
-  id: string;
-  isFullMode?: boolean;
-};
-
 export enum EButtonLabel {
   MORE_DETAILS = "Подробнее",
 }
