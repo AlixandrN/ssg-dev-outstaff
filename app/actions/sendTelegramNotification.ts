@@ -1,17 +1,16 @@
 import { TCustomerData } from "@/lib/constants";
 
-// to do ( в .env!)
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const CHAT_ID = process.env.TELEGRAM_CHAT_ID;
 
 export const sendTelegramNotification = async (formData: TCustomerData) => {
   const text = `
-📬 Новая заявка с сайта!
+📬 New message from App
 
-👤 Имя: ${formData.name}
+👤 Name: ${formData.name}
 📧 Email: ${formData.email}
-💬 Сообщение: ${formData.message}
-🕐 Время: ${new Date().toLocaleString("ru-RU")}
+💬 Message: ${formData.message}
+🕐 Time: ${new Date().toLocaleString("ru-RU")}
   `;
 
   const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
