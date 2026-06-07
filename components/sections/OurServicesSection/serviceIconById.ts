@@ -1,0 +1,30 @@
+import {
+  Globe,
+  ShoppingCart,
+  Target,
+  Cpu,
+  Wrench,
+  LayoutTemplate,
+  Link2,
+  RefreshCw,
+  Bot,
+  Rocket,
+  Gauge,
+  FileText,
+  LucideIcon,
+} from "lucide-react";
+
+export const serviceIconById: Record<string, LucideIcon> = {
+  corporate: Globe,
+  ecommerce: ShoppingCart,
+  landing: Target,
+  webdev: Cpu,
+  support: Wrench,
+  audit_ux: LayoutTemplate,
+  integration: Link2,
+  redesign: RefreshCw,
+  ai_automation: Bot,
+  mvp: Rocket,
+  highload: Gauge,
+  consulting: FileText,
+};
