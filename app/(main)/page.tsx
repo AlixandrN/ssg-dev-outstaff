@@ -8,9 +8,10 @@ import { FrameworksSection } from "@/components/sections/FrameworksSection";
 import { GetInTouchSection } from "@/components/sections/GetInTouchSection";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
 import { IData } from "@/lib/types";
+import { OurServicesSection } from "@/components/sections/OurServicesSection";
 
 export default async function HomePage() {
-  const { HOME, FEATURES, PRODUCTS, MODALS, WHY_CHOOSE_US } =
+  const { HOME, FEATURES, PRODUCTS, MODALS, WHY_CHOOSE_US, OUR_SERVICES } =
     await getLocalData<IData>("app-data");
   return (
     <div className="mx-auto flex flex-col md:gap-5 w-full justify-around ">
@@ -19,6 +20,7 @@ export default async function HomePage() {
 
       <FirstSection home={HOME} features={FEATURES} />
       <WhyChooseUsSection whyChooseUsData={WHY_CHOOSE_US} />
+      <OurServicesSection ourServicesData={OUR_SERVICES} />
 
       <FrameworksSection />
 
