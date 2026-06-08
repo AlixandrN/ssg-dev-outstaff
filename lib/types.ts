@@ -32,11 +32,18 @@ export interface OurServicesData {
   SERVICES: DefaultCardProps[];
 }
 
+export interface WorkStages {
+  TITLE: string;
+  SUBTITLE: string;
+  STAGES: DefaultCardProps[];
+}
+
 export interface IData {
   COMMON: Record<string, string>;
   HOME: Record<string, string>;
   WHY_CHOOSE_US: WhyChooseUsData;
   OUR_SERVICES: OurServicesData;
+  WORK_STAGES: WorkStages;
   CONTACTS: Record<string, string>;
   MODALS: Record<string, TModalData>;
   FEATURES: string[];

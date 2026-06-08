@@ -46,3 +46,7 @@ export type TCustomerData = {
   email: string;
   message: string;
 };
+
+export enum EStub {
+  NO_DATA = "No data",
+}

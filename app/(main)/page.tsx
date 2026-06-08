@@ -9,10 +9,18 @@ import { GetInTouchSection } from "@/components/sections/GetInTouchSection";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
 import { IData } from "@/lib/types";
 import { OurServicesSection } from "@/components/sections/OurServicesSection";
+import { WorkStagesSection } from "@/components/sections/WorkStagesSection";
 
 export default async function HomePage() {
-  const { HOME, FEATURES, PRODUCTS, MODALS, WHY_CHOOSE_US, OUR_SERVICES } =
-    await getLocalData<IData>("app-data");
+  const {
+    HOME,
+    FEATURES,
+    PRODUCTS,
+    MODALS,
+    WHY_CHOOSE_US,
+    OUR_SERVICES,
+    WORK_STAGES,
+  } = await getLocalData<IData>("app-data");
   return (
     <div className="mx-auto flex flex-col md:gap-5 w-full justify-around ">
       {/* <div className="absolute inset-0 bg-linear-to-r from-primary/85 via-primary/85 to-secondary/75 z-10" /> */}
@@ -26,6 +34,9 @@ export default async function HomePage() {
 
       <GetInTouchSection home={HOME} modals={MODALS} />
       <ProductsSection home={HOME} products={PRODUCTS} />
+
+      <WorkStagesSection workStages={WORK_STAGES} />
+
       <IDESection />
       <CoveredSection />
       <ScrollAnimationBox rootMargin="50px" animationType="zoom" delay={200}>
