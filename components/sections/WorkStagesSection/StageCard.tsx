@@ -18,13 +18,12 @@ export const StageCard = forwardRef<HTMLDivElement, StageCardProps>(
       <div
         ref={ref}
         className={`
-          group relative bg-white rounded-2xl p-6 md:p-8
-          transition-all duration-1000 ease-out cursor-pointer
-          border-2 shadow-lg hover:shadow-xl
+          group relative rounded-2xl p-6 md:p-8
+          transition-all duration-1000 ease-out
           ${
             isActive
-              ? "border-(--brand-blue) bg-linear-to-br from-white to-blue-50 shadow-blue-100"
-              : "border-transparent"
+              ? "bg-linear-to-br from-white to-blue-50/50"
+              : "bg-transparent"
           }
         `}
         style={{
@@ -36,7 +35,7 @@ export const StageCard = forwardRef<HTMLDivElement, StageCardProps>(
         aria-setsize={totalItems}
         itemScope
         itemProp="itemListElement"
-        itemType="https://schema.org/ListItem"
+        itemType="https://schema.org"
       >
         <div className="flex gap-6 md:gap-8 flex-col md:flex-row items-center md:items-start">
           <div
@@ -44,12 +43,7 @@ export const StageCard = forwardRef<HTMLDivElement, StageCardProps>(
               shrink-0 w-24 h-24 md:w-28 md:h-28
               flex items-center justify-center rounded-2xl
               transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1)
-              bg-blue-50
-              ${
-                isActive
-                  ? "shadow-lg shadow-blue-200 scale-105"
-                  : "group-hover:bg-blue-100"
-              }
+              ${isActive ? "bg-blue-50 scale-105" : "bg-slate-100/50"}
             `}
             aria-hidden="true"
           >
@@ -59,11 +53,7 @@ export const StageCard = forwardRef<HTMLDivElement, StageCardProps>(
                 strokeWidth={1.5}
                 className={`
                   transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1) text-(--brand-blue)
-                  ${
-                    isActive
-                      ? "opacity-100 scale-100 rotate-0"
-                      : "opacity-40 scale-90 group-hover:opacity-80 group-hover:scale-95"
-                  }
+                  ${isActive ? "opacity-100 scale-100" : "opacity-30 scale-95"}
                 `}
                 aria-hidden="true"
               />
@@ -80,8 +70,8 @@ export const StageCard = forwardRef<HTMLDivElement, StageCardProps>(
                   transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1)
                   ${
                     isActive
-                      ? "bg-(--brand-blue) text-white scale-105 shadow-md"
-                      : "bg-blue-100 text-(--brand-blue-hover)"
+                      ? "bg-(--brand-blue) text-white scale-105"
+                      : "bg-slate-100 text-slate-400"
                   }
                 `}
                 aria-label={`Этап ${stage.id}`}
@@ -93,7 +83,7 @@ export const StageCard = forwardRef<HTMLDivElement, StageCardProps>(
               <span
                 className={`
                   transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1)
-                  ${isActive ? "text-(--brand-blue-hover) translate-x-1" : "text-slate-800"}
+                  ${isActive ? "text-(--brand-blue-hover)" : "text-slate-800 opacity-40"}
                 `}
               >
                 {stage.title}
@@ -105,7 +95,7 @@ export const StageCard = forwardRef<HTMLDivElement, StageCardProps>(
               className={`
                 text-slate-600 leading-relaxed text-base md:text-lg
                 transition-all duration-1000 cubic-bezier(0.4, 0, 0.2, 1)
-                ${isActive ? "opacity-100 translate-y-0" : "opacity-60"}
+                ${isActive ? "opacity-100" : "opacity-30"}
               `}
             >
               {stage.description}

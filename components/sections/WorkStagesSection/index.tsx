@@ -31,8 +31,8 @@ export const WorkStagesSection = ({
           });
         },
         {
-          threshold: 0.3,
-          rootMargin: "-50px 0px -50px 0px",
+          rootMargin: "-49% 0px -49% 0px",
+          threshold: 0,
         },
       );
 
