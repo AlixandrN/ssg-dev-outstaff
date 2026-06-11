@@ -12,11 +12,11 @@ export const ProductCard = (props: TProduct) => {
       itemScope
       itemType="https://schema.org"
       className="group relative flex flex-col justify-between overflow-hidden rounded-2xl
-      border border-slate-100 bg-white p-4 transition-all duration-300 /* Уменьшили общий padding с p-5 до p-4 */
+      border border-slate-100 bg-white p-4 md:p-5 transition-all duration-300
       hover:-translate-y-1 hover:border-slate-200 hover:shadow-xl hover:shadow-slate-100/50 h-full"
     >
-      <div>
-        <div className="relative aspect-16/10 w-full overflow-hidden rounded-xl bg-slate-50 mb-3">
+      <div className="flex flex-col h-full">
+        <div className="relative aspect-16/10 w-full overflow-hidden rounded-xl bg-slate-50 mb-4">
           <Image
             src={`/products/${id}.webp`}
             alt={title}
@@ -34,7 +34,7 @@ export const ProductCard = (props: TProduct) => {
         </div>
 
         {/* Title and price */}
-        <div className="flex items-start justify-between gap-3 mb-3">
+        <div className="flex items-start justify-between gap-3 mb-4">
           <h2
             itemProp="name"
             className="text-lg md:text-xl font-bold text-slate-900 tracking-tight leading-snug group-hover:text-(--brand-blue-hover) transition-colors duration-300"
@@ -67,13 +67,13 @@ export const ProductCard = (props: TProduct) => {
         </div>
 
         {/* Advantages list */}
-        <div className="border-t border-dashed border-slate-100 pt-3">
+        <div className="border-t border-dashed border-slate-100 pt-4 flex-1">
           <meta
             itemProp="description"
             content={`Характеристики и преимущества: ${advantages.join(", ")}`}
           />
 
-          <ul className="flex flex-col gap-2 text-xs md:text-sm text-slate-600">
+          <ul className="grid grid-cols-2 md:grid-cols-1 gap-x-4 gap-y-2.5 text-xs md:text-sm text-slate-600">
             {advantages.map((advantage, index) => (
               <ProductCardItem key={index} label={advantage} />
             ))}
@@ -82,7 +82,7 @@ export const ProductCard = (props: TProduct) => {
       </div>
 
       {/* Button */}
-      <div className="mt-4">
+      <div className="mt-5">
         <Link
           href={`/${id}`}
           aria-label={`${EButtonLabel.MORE_DETAILS} о товаре ${title}`}
