@@ -7,20 +7,14 @@ import { ProductsSection } from "@/components/sections/ProductsSection";
 import { FrameworksSection } from "@/components/sections/FrameworksSection";
 import { GetInTouchSection } from "@/components/sections/GetInTouchSection";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
-import { IData } from "@/lib/types";
+import { IData, TProduct } from "@/lib/types";
 import { OurServicesSection } from "@/components/sections/OurServicesSection";
 import { WorkStagesSection } from "@/components/sections/WorkStagesSection";
 
 export default async function HomePage() {
-  const {
-    HOME,
-    FEATURES,
-    PRODUCTS,
-    MODALS,
-    WHY_CHOOSE_US,
-    OUR_SERVICES,
-    WORK_STAGES,
-  } = await getLocalData<IData>("app-data");
+  const { HOME, FEATURES, MODALS, WHY_CHOOSE_US, OUR_SERVICES, WORK_STAGES } =
+    await getLocalData<IData>("app-data");
+  const PRODUCTS = await getLocalData<TProduct[]>("products");
   return (
     <div className="mx-auto flex flex-col md:gap-5 w-full justify-around ">
       {/* <div className="absolute inset-0 bg-linear-to-r from-primary/85 via-primary/85 to-secondary/75 z-10" /> */}

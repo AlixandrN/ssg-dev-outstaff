@@ -1,4 +1,4 @@
-import { IData } from "@/lib/types";
+import { IData, TProduct } from "@/lib/types";
 import { SwiperProductsBox } from "./SwiperProductsBox";
 import { H2Title } from "@/components/ui/texts/H2Title";
 
@@ -7,7 +7,7 @@ export const ProductsSection = ({
   products,
 }: {
   home: IData["HOME"];
-  products: IData["PRODUCTS"];
+  products: TProduct[];
 }) => {
   const { GREATE_DEALS } = home;
 
