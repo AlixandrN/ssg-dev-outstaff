@@ -1,11 +1,14 @@
 export type TProduct = {
   id: string;
   title: string;
-  onClick: VoidFunction;
-  bage: string;
-  price: string;
+  price: number;
+  bage?: string;
   advantages: string[];
-  home: Record<string, string>;
+  description: string;
+  extendedDescription: {
+    subtitle: string;
+    text: string;
+  }[];
 };
 
 export type TModalData = {
@@ -40,16 +43,16 @@ export interface WorkStages {
 
 export interface IData {
   COMMON: Record<string, string>;
+  FEATURES: string[];
   HOME: Record<string, string>;
   WHY_CHOOSE_US: WhyChooseUsData;
   OUR_SERVICES: OurServicesData;
   WORK_STAGES: WorkStages;
   CONTACTS: Record<string, string>;
   MODALS: Record<string, TModalData>;
-  FEATURES: string[];
-  PRODUCTS: TProduct[];
 }
 
 export enum EButtonLabel {
   MORE_DETAILS = "Подробнее",
+  ORDER_DEVELOPMENT = "Заказать разработку",
 }

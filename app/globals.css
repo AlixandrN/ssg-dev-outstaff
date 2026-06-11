@@ -239,3 +239,47 @@ html {
 .section-style {
   @apply relative w-full md:px-8 flex gap-2;
 }
+
+/* Переименовали базовый класс */
+.btn-link-primary {
+  display: inline-flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-2xl, 1rem);
+  padding: 0.625rem 1rem;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+
+  background: linear-gradient(
+    to right,
+    var(--brand-blue),
+    var(--brand-blue-hover),
+    var(--brand-blue)
+  );
+  background-size: 200% auto;
+  background-position: left center;
+
+  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+/* Обновили селекторы состояний */
+.btn-link-primary:hover {
+  background-position: right center;
+  box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.25);
+}
+
+.btn-link-primary:active {
+  transform: scale(0.98);
+}
+
+/* Обновили модификатор размера */
+.btn-link-primary.btn-lg {
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+}

@@ -86,17 +86,7 @@ export const ProductCard = (props: TProduct) => {
         <Link
           href={`/${id}`}
           aria-label={`${EButtonLabel.MORE_DETAILS} о товаре ${title}`}
-          className="
-      inline-flex w-full items-center justify-center rounded-xl 
-      px-4 py-2.5 text-center text-sm font-semibold text-white 
-      bg-linear-to-r from-(--brand-blue) via-(--brand-blue-hover) to-(--brand-blue)
-      bg-[length:200%_auto] bg-left
-      shadow-md shadow-blue-600/10
-      transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)
-      hover:bg-right
-      hover:shadow-lg hover:shadow-blue-600/25
-      active:scale-[0.98]
-    "
+          className="btn-link-primary"
         >
           {EButtonLabel.MORE_DETAILS}
         </Link>

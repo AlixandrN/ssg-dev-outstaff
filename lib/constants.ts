@@ -50,3 +50,8 @@ export type TCustomerData = {
 export enum EStub {
   NO_DATA = "No data",
 }
+
+export enum EPhrases {
+  ABOUT_PRODUCT = "О продукте",
+  WHAT_IS_INCLUDED = "Что включено",
+}

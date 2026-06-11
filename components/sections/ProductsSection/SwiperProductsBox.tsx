@@ -11,11 +11,7 @@ import { TProduct } from "@/lib/types";
 import { ProductCard } from "./ProductCard";
 import { SwiperNavigation } from "./SwiperNavigation";
 
-type TProductSwiper = {
-  list: TProduct[];
-};
-
-export const SwiperProductsBox = ({ list }: TProductSwiper) => {
+export const SwiperProductsBox = ({ list }: { list: TProduct[] }) => {
   const swiperRef = useRef<SwiperType | null>(null);
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
