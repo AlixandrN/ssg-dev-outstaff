@@ -13,7 +13,7 @@ export const ProductsSection = ({
 
   return (
     <section
-      className="container mx-auto px-4 max-w-8xl py-12 md:py-20"
+      className="container-custom"
       aria-labelledby="products-section-title"
     >
       <H2Title id="products-section-title" title={GREATE_DEALS} centered />
