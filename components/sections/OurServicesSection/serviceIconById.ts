@@ -15,9 +15,9 @@ import {
 } from "lucide-react";
 
 export const serviceIconById: Record<string, LucideIcon> = {
-  corporate: Globe,
-  ecommerce: ShoppingCart,
-  landing: Target,
+  business_site: Globe,
+  ecommerce_store: ShoppingCart,
+  landing_page: Target,
   webdev: Cpu,
   support: Wrench,
   audit_ux: LayoutTemplate,

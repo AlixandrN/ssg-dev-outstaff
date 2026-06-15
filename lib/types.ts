@@ -32,7 +32,7 @@ export interface WhyChooseUsData {
 export interface OurServicesData {
   TITLE: string;
   SUBTITLE: string;
-  SERVICES: DefaultCardProps[];
+  SERVICES: { id: string; title: string; description: string }[];
 }
 
 export interface WorkStages {

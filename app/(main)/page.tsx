@@ -1,4 +1,4 @@
-import { CoveredSection } from "@/components/sections/CoveredSection";
+// import { CoveredSection } from "@/components/sections/CoveredSection";
 import { IDESection } from "@/components/sections/IDESection";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 import { ScrollAnimationBox } from "@/components/ScrollAnimationBox";
@@ -22,7 +22,6 @@ export default async function HomePage() {
 
       <FirstSection home={HOME} features={FEATURES} />
       <WhyChooseUsSection whyChooseUsData={WHY_CHOOSE_US} />
-      <OurServicesSection ourServicesData={OUR_SERVICES} />
 
       <FrameworksSection />
 
@@ -32,11 +31,11 @@ export default async function HomePage() {
       <WorkStagesSection workStages={WORK_STAGES} />
 
       <IDESection />
-      <CoveredSection />
+
       <ScrollAnimationBox rootMargin="50px" animationType="zoom" delay={200}>
-        <CoveredSection />
+        {/* <CoveredSection /> */}
+        <OurServicesSection ourServicesData={OUR_SERVICES} />
       </ScrollAnimationBox>
-      <CoveredSection />
     </div>
   );
 }
