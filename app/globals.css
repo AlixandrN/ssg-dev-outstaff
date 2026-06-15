@@ -240,7 +240,6 @@ html {
   @apply relative w-full md:px-8 flex gap-2;
 }
 
-/* Переименовали базовый класс */
 .btn-link-primary {
   display: inline-flex;
   width: 100%;
@@ -267,7 +266,6 @@ html {
   cursor: pointer;
 }
 
-/* Обновили селекторы состояний */
 .btn-link-primary:hover {
   background-position: right center;
   box-shadow: 0 10px 15px -3px rgba(37, 99, 235, 0.25);
@@ -277,9 +275,12 @@ html {
   transform: scale(0.98);
 }
 
-/* Обновили модификатор размера */
 .btn-link-primary.btn-lg {
   padding: 1rem 1.5rem;
   font-size: 1rem;
   font-weight: 700;
+}
+
+.container-custom {
+  @apply container mx-auto px-4 max-w-7xl py-12 md:py-20;
 }
