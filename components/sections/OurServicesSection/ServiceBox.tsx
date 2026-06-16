@@ -1,6 +1,6 @@
 import { DefaultCardProps } from "@/lib/types";
 import { ServiceLink } from "./ServiceLink";
-import { serviceIconById } from "./serviceIconById";
+import { serviceIconById } from "@/lib/data-utils/serviceIconById";
 
 type TServiceBox = Omit<DefaultCardProps, "id"> & {
   id: string;

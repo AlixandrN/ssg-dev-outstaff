@@ -134,7 +134,6 @@ export const CustomerForm = ({
 
           form {
             padding-bottom: env(safe-area-inset-bottom, 20px);
-            /* Заменяем прыгающую высоту на стабильную отрисовку */
             display: flex;
             flex-direction: column;
             backface-visibility: hidden;
