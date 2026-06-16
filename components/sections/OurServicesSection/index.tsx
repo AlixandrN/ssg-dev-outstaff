@@ -1,7 +1,7 @@
-import { ServiceLink } from "./ServiceLink";
-import { serviceIconById } from "./serviceIconById";
 import { IData } from "@/lib/types";
 import { H2Title } from "@/components/ui/texts/H2Title";
+import { ServiceBox } from "./ServiceBox";
+import { ScrollAnimationBox } from "@/components/ScrollAnimationBox";
 
 export const OurServicesSection = ({
   ourServicesData,
@@ -15,9 +15,9 @@ export const OurServicesSection = ({
       className="w-full bg-info-content"
       aria-labelledby="services-title"
     >
-      <div className="text-primary-content container-custom py-8 md:py-16">
-        <div className="text-center mb-6 md:mb-12">
-          <H2Title id="services-title" title={TITLE} centered />
+      <div className="text-primary-content container-custom py-16 md:py-20">
+        <div className="text-center mb-10 md:mb-14">
+          <H2Title id="services-title" title={TITLE} centered lightMode />
 
           <p className="text-sm md:text-xl text-primary-content/80 max-w-3xl mx-auto px-4 md:px-0">
             {SUBTITLE}
@@ -29,23 +29,23 @@ export const OurServicesSection = ({
           />
         </div>
 
-        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 m-0 p-0 list-none">
-          {SERVICES.map(({ id, title }, index) => {
-            const IconComponent = serviceIconById[id];
-
+        <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-0 md:gap-x-12 m-0 p-0 list-none">
+          {SERVICES.map(({ id, title, description }, index) => {
             return (
-              <li
-                key={index}
-                className={`
-                  m-0 p-0 list-none
-                  ${index % 2 === 1 ? "md:pl-8" : ""}
-                  border-b border-primary-content/20
-                  last:border-b-0
-                  md:border-b-0
-                `}
+              <ScrollAnimationBox
+                key={id}
+                triggerOnce={true}
+                rootMargin="50px"
+                animationType="zoom"
+                delay={index * 40}
               >
-                <ServiceLink id={id} title={title} icon={IconComponent} />
-              </li>
+                <ServiceBox
+                  index={index}
+                  id={id}
+                  title={title}
+                  description={description}
+                />
+              </ScrollAnimationBox>
             );
           })}
         </ul>
