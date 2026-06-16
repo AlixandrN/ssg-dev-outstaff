@@ -17,12 +17,7 @@ const ContactPage = async () => {
   const { GET_IN_TOUCH_SUCCESS, GET_IN_TOUCH_ERROR } = MODALS;
 
   return (
-    <div
-      className="mx-auto flex flex-col  w-full
-      justify-start items-center 
-      gap-2 md:gap-5 
-      "
-    >
+    <div className="mx-auto flex flex-col w-full justify-start items-center">
       <CustomerForm
         isPageMode
         title={GET_IN_TOUCH}
