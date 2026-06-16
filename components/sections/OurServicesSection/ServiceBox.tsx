@@ -1,26 +1,31 @@
 import { DefaultCardProps } from "@/lib/types";
-import { LucideIcon } from "lucide-react";
+import { ServiceLink } from "./ServiceLink";
+import { serviceIconById } from "./serviceIconById";
 
-interface ServiceBox extends DefaultCardProps {
-  icon: LucideIcon;
-}
+type TServiceBox = Omit<DefaultCardProps, "id"> & {
+  id: string;
+  index: number;
+};
 
-export const ServiceBox = ({
-  title,
-  description,
-  icon: Icon,
-}: Omit<ServiceBox, "id">) => {
+export const ServiceBox = ({ index, id, title, description }: TServiceBox) => {
+  const IconComponent = serviceIconById[id];
   return (
-    <li className="flex gap-4 p-6 bg-white rounded-2xl shadow-xs border border-gray-100 hover:shadow-md transition-shadow duration-300">
-      <div className="shrink-0 p-3 bg-blue-50 text-blue-600 rounded-xl h-12 w-12 flex items-center justify-center">
-        <Icon className="w-6 h-6" />
-      </div>
-      <div>
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">{title}</h3>
-        <p className="text-gray-600 leading-relaxed hidden md:block">
-          {description}
-        </p>
-      </div>
+    <li
+      className={`
+                     m-0 list-none
+                     p-5 md:px-0
+                     ${index % 2 === 1 ? "md:pl-6" : "md:pr-6"}
+                     border-b border-primary-content/20
+                     md:border-b md:border-primary-content/10
+                     nth-last-[-n+2]:md:border-b-0
+                     flex flex-col gap-1
+                   `}
+    >
+      <ServiceLink id={id} title={title} icon={IconComponent} />
+
+      <p className="hidden md:block text-xs text-primary-content/70 pl-9 md:pl-11 font-normal leading-relaxed max-w-xl">
+        {description}
+      </p>
     </li>
   );
 };
