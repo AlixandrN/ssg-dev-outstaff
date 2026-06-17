@@ -35,7 +35,7 @@ export const SwiperProductsBox = ({ list }: { list: TProduct[] }) => {
     <div className="relative py-6 px-2 overflow-x-hidden">
       <Swiper
         modules={[Navigation, Autoplay]}
-        className="w-full !overflow-visible !flex items-stretch"
+        className="w-full overflow-visible! flex! items-stretch"
         spaceBetween={20}
         slidesPerView={2}
         navigation={{
@@ -87,7 +87,7 @@ export const SwiperProductsBox = ({ list }: { list: TProduct[] }) => {
         }}
       >
         {list.map((item, index) => (
-          <SwiperSlide key={index} className="!h-auto">
+          <SwiperSlide key={index} className="h-auto!">
             <ProductCard {...item} />
           </SwiperSlide>
         ))}

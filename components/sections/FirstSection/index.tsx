@@ -31,7 +31,7 @@ export const FirstSection = ({
             href={EPublicRoutes.CONTACT}
             className="mt-8 lg:mt-2 inline-block self-center lg:self-start"
           >
-            <ButtonIcon
+            <ButtonIcon // to do optimize
               label="Связаться с нами"
               icon="arrow-right"
               className="btn bg-(--brand-blue) hover:bg-(--brand-blue-hover) text-white border-none"

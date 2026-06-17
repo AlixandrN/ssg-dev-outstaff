@@ -236,10 +236,6 @@ html {
   }
 }
 
-.section-style {
-  @apply relative w-full md:px-8 flex gap-2;
-}
-
 .btn-link-primary {
   display: inline-flex;
   width: 100%;

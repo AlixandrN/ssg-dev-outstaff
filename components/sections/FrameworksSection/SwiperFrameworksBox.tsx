@@ -31,7 +31,7 @@ export const SwiperFrameworksBox = ({ list }: { list: string[] }) => {
           640: { slidesPerView: 5, spaceBetween: 20 },
           768: { slidesPerView: 5, spaceBetween: 24 },
           1024: { slidesPerView: 7, spaceBetween: 28 },
-          1280: { slidesPerView: 8, spaceBetween: 32 },
+          1280: { slidesPerView: 7, spaceBetween: 32 },
         }}
         className="w-full"
       >
