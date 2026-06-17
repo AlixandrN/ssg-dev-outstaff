@@ -1,5 +1,3 @@
-// import { CoveredSection } from "@/components/sections/CoveredSection";
-// import { IDESection } from "@/components/sections/IDESection";
 import { WhyChooseUsSection } from "@/components/sections/WhyChooseUsSection";
 import { FirstSection } from "@/components/sections/FirstSection";
 import { ProductsSection } from "@/components/sections/ProductsSection";
@@ -9,6 +7,7 @@ import { getLocalData } from "@/lib/data-utils/getLocalData";
 import { IData, TProduct } from "@/lib/types";
 import { OurServicesSection } from "@/components/sections/OurServicesSection";
 import { WorkStagesSection } from "@/components/sections/WorkStagesSection";
+// import { IDESection } from "@/components/sections/IDESection";
 
 export default async function HomePage() {
   const { HOME, FEATURES, MODALS, WHY_CHOOSE_US, OUR_SERVICES, WORK_STAGES } =
@@ -20,20 +19,19 @@ export default async function HomePage() {
       <div className="absolute inset-0 z-10" />
 
       <FirstSection home={HOME} features={FEATURES} />
+
       <WhyChooseUsSection whyChooseUsData={WHY_CHOOSE_US} />
 
       <FrameworksSection />
 
-      <GetInTouchSection home={HOME} modals={MODALS} />
-
       <ProductsSection home={HOME} products={PRODUCTS} />
+
       <OurServicesSection ourServicesData={OUR_SERVICES} />
 
       <WorkStagesSection workStages={WORK_STAGES} />
 
+      <GetInTouchSection home={HOME} modals={MODALS} />
       {/* <IDESection /> */}
-
-      {/* <CoveredSection /> */}
     </div>
   );
 }

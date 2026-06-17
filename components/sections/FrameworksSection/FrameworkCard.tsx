@@ -13,7 +13,7 @@ export const FrameworkCard = ({ id }: { id: string }) => {
           width={100}
           height={100}
           priority
-          className="w-[100px] h-[100px] object-contain "
+          className="w-25 h-25 object-contain "
         />
       </figure>
     </div>

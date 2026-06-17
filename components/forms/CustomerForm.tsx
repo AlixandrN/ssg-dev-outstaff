@@ -88,12 +88,14 @@ export const CustomerForm = ({
         }
       }}
     >
-      <h1
-        id="form-title"
-        className={`text-xl font-bold ${isPageMode ? "mb-2 lg:mb-8" : "mb-2"}  text-gray-800`}
-      >
-        {title ?? "Форма обратной связи"}
-      </h1>
+      {title && (
+        <h1
+          id="form-title"
+          className={`text-xl font-bold ${isPageMode ? "mb-2 lg:mb-8" : "mb-2"}  text-gray-800`}
+        >
+          {title}
+        </h1>
+      )}
       <InputLabel
         id="name"
         value={customerData.name}
@@ -120,7 +122,7 @@ export const CustomerForm = ({
         type="submit"
         label={"Send Message"}
         icon={"arrow-right"}
-        className="btn-green w-full mt-6"
+        className="btn bg-(--brand-blue) hover:bg-(--brand-blue-hover) text-white border-none w-full"
         isSubmitting={isPending}
       />
 
