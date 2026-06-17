@@ -9,7 +9,7 @@ export const CustomersTable = ({ customers }: { customers: User[] }) => {
         <tr>
           <th className={`${thClass} w-[20%] md:w-25 text-center`}>ID</th>
           <th className={`${thClass} w-[20%] md:w-25`}>Date</th>
-          <th className={`${thClass} w-[30%] md:w-[150px]`}>Name</th>
+          <th className={`${thClass} w-[30%] md:w-37.5`}>Name</th>
           <th className={`${thClass} w-[30%] md:w-50`}>Email</th>
           <th className={`${thClass} hidden md:table-cell`}>Message</th>
           <th
