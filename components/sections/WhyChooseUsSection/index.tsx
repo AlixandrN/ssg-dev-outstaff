@@ -1,14 +1,14 @@
 import { ScrollAnimationBox } from "@/components/ScrollAnimationBox";
 import { LOGO } from "@/lib/constants";
 import { ReasonBox } from "./ReasonBox";
-import { IData } from "@/lib/types";
+import { WhyChooseUsData } from "@/lib/types";
 import { reasonIconById } from "./reasonIconById";
 import { H2Title } from "@/components/ui/texts/H2Title";
 
 export const WhyChooseUsSection = ({
   whyChooseUsData,
 }: {
-  whyChooseUsData: IData["WHY_CHOOSE_US"];
+  whyChooseUsData: WhyChooseUsData;
 }) => {
   const { TITLE, SUBTITLE, REASONS } = whyChooseUsData;
   return (
