@@ -45,9 +45,7 @@ export interface IData {
   COMMON: Record<string, string>;
   FEATURES: string[];
   HOME: Record<string, string>;
-  WHY_CHOOSE_US: WhyChooseUsData;
   OUR_SERVICES: OurServicesData;
-  WORK_STAGES: WorkStages;
   CONTACTS: Record<string, string>;
   MODALS: Record<string, TModalData>;
 }

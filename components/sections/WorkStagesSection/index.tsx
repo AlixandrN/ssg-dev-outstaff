@@ -2,13 +2,13 @@
 
 import { useRef, useEffect, useState } from "react";
 import { StageCard } from "./StageCard";
-import { IData } from "@/lib/types";
+import { WorkStages } from "@/lib/types";
 import { EStub } from "@/lib/constants";
 
 export const WorkStagesSection = ({
   workStages,
 }: {
-  workStages: IData["WORK_STAGES"];
+  workStages: WorkStages;
 }) => {
   const { TITLE, SUBTITLE, STAGES } = workStages;
   const [activeId, setActiveId] = useState<number>(STAGES[0]?.id || 1);
