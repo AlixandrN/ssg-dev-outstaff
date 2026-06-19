@@ -36,7 +36,7 @@ const AboutPage = async () => {
     await getLocalData<IData>("app-data");
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       {ABOUT_HERO && <AboutHeroSection aboutHeroData={ABOUT_HERO} />}
       {REASONS && <WhyChooseUsAboutSection whyChooseUsReasons={REASONS} />}
       {ABOUT_SOLUTIONS && (
@@ -97,7 +97,7 @@ const AboutPage = async () => {
       </section>
 
       {CTA && <CTASection cTAData={CTA} />}
-    </main>
+    </div>
   );
 };
 
