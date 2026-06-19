@@ -41,6 +41,15 @@ export interface WorkStages {
   STAGES: DefaultCardProps[];
 }
 
+export interface AboutSolutions {
+  title: string;
+  description: string;
+  cards: {
+    title: string;
+    description: string;
+  }[];
+}
+
 export interface IData {
   COMMON: Record<string, string>;
   FEATURES: string[];
@@ -50,6 +59,7 @@ export interface IData {
   MODALS: Record<string, TModalData>;
   ABOUT_HERO: Record<string, string>;
   CTA: Record<string, string>;
+  ABOUT_SOLUTIONS: AboutSolutions;
 }
 
 export enum EButtonLabel {
