@@ -5,15 +5,33 @@ import { ServiceCart } from "./ServiceCart";
 import { serviceIconById } from "@/lib/data-utils/serviceIconById";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
 import { CustomerForm } from "@/components/forms/CustomerForm";
+import { BASE_URL, LOGO } from "@/lib/constants";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { OUR_SERVICES } = await getLocalData<IData>("app-data");
+  const title = `Услуги веб-студии | Разработка сайтов на заказ | ${LOGO}`;
+  const description =
+    "Разработка сайтов любой сложности: лендинги, интернет-магазины, корпоративные порталы. Полный цикл под ключ с SEO оптимизацией и техподдержкой.";
   return {
-    title: OUR_SERVICES.TITLE,
-    description: OUR_SERVICES.SUBTITLE, // to do add description to the data
+    title,
+    description,
+    alternates: {
+      canonical: `${BASE_URL}/services`,
+    },
     openGraph: {
-      title: OUR_SERVICES.TITLE,
-      description: OUR_SERVICES.SUBTITLE,
+      // link on social networks (tg)
+      title: title,
+      description: description,
+      url: `${BASE_URL}/services`,
+      siteName: `${LOGO}`,
+      images: [
+        {
+          url: `${BASE_URL}/images/about-team.webp`,
+          width: 1200,
+          height: 630,
+          alt: `Услуги веб-студии`,
+        },
+      ],
+      locale: "ru_BY",
       type: "website",
     },
   };
@@ -25,7 +43,7 @@ const ServicesPage = async () => {
   const { GET_IN_TOUCH_SUCCESS, GET_IN_TOUCH_ERROR } = MODALS;
 
   return (
-    <main
+    <div
       className="py-20 bg-gray-50"
       itemScope
       itemType="https://schema.org/CollectionPage"
@@ -38,7 +56,7 @@ const ServicesPage = async () => {
           >
             {TITLE}
           </h1>
-
+          <h2 className="sr-only">Наши услуги по разработке сайтов</h2>
           <p
             className="text-xl text-gray-600 max-w-3xl mx-auto"
             itemProp="description"
@@ -88,7 +106,7 @@ const ServicesPage = async () => {
           errorModalData={GET_IN_TOUCH_ERROR}
         />
       </div>
-    </main>
+    </div>
   );
 };
 
