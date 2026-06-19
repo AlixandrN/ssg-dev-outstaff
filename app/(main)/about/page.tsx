@@ -1,5 +1,7 @@
 import { AboutHeroSection } from "@/components/sections/AboutHeroSection";
+import { AboutSolutionsSection } from "@/components/sections/AboutSolutionsSection";
 import { CTASection } from "@/components/sections/CTASection";
+import { WhyChooseUsAboutSection } from "@/components/sections/WhyChooseUsAboutSection";
 import { WorkStagesSection } from "@/components/sections/WorkStagesSection";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
 import { IData, WhyChooseUsData, WorkStages } from "@/lib/types";
@@ -30,74 +32,16 @@ const principles = [
 const AboutPage = async () => {
   const WORK_STAGES = await getLocalData<WorkStages>("work-stages");
   const { REASONS } = await getLocalData<WhyChooseUsData>("why-choose-us");
-  const { ABOUT_HERO, CTA } = await getLocalData<IData>("app-data");
+  const { ABOUT_HERO, CTA, ABOUT_SOLUTIONS } =
+    await getLocalData<IData>("app-data");
 
   return (
     <main className="bg-white">
       {ABOUT_HERO && <AboutHeroSection aboutHeroData={ABOUT_HERO} />}
-
-      {/* WHY_CHOOSE_US REASONS*/}
-      <section className="container mx-auto px-6 pb-24">
-        <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:justify-center md:gap-6">
-          {REASONS.map((item) => (
-            <div
-              key={item.title}
-              className="w-full rounded-3xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-md sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)] xl:w-[calc(25%-18px)] 2xl:w-auto 2xl:flex-1 2xl:max-w-none"
-            >
-              <h3 className="text-lg font-semibold text-slate-900">
-                {item.title}
-              </h3>
-              <p className="mt-3 hidden text-sm leading-6 text-slate-600 md:block">
-                {item.description}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Solutions */}
-      <section className="bg-slate-50">
-        <div className="container mx-auto px-6 py-24">
-          <div className="mx-auto max-w-4xl">
-            <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
-              Решение найдётся для каждого
-            </h2>
-
-            <p className="mt-6 text-lg text-slate-600">
-              Мы понимаем, что возможности бизнеса могут сильно отличаться.
-              Поэтому предлагаем решения как для стартапов и небольших компаний,
-              так и для серьёзных проектов с высокими требованиями.
-            </p>
-
-            <div className="mt-10 grid gap-6 md:grid-cols-2">
-              <div className="rounded-3xl border border-slate-200 bg-white p-8">
-                <h3 className="text-xl font-semibold text-slate-900">
-                  Для старта бизнеса
-                </h3>
-
-                <p className="mt-4 text-slate-600">
-                  Если вы только начинаете и ограничены в бюджете, мы предложим
-                  оптимальное решение, которое позволит быстро выйти в интернет
-                  и начать привлекать клиентов.
-                </p>
-              </div>
-
-              <div className="rounded-3xl border border-blue-200 bg-blue-50 p-8">
-                <h3 className="text-xl font-semibold text-slate-900">
-                  Для серьёзных проектов
-                </h3>
-
-                <p className="mt-4 text-slate-600">
-                  Если вам нужен уникальный продукт с индивидуальным дизайном,
-                  интеграциями и сложной логикой — мы разработаем решение,
-                  полностью соответствующее вашим задачам.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {REASONS && <WhyChooseUsAboutSection whyChooseUsReasons={REASONS} />}
+      {ABOUT_SOLUTIONS && (
+        <AboutSolutionsSection aboutSolutionsData={ABOUT_SOLUTIONS} />
+      )}
       {WORK_STAGES && <WorkStagesSection workStages={WORK_STAGES} />}
 
       {/* Principles */}

@@ -8,8 +8,12 @@ export const AboutHeroSection = ({
   aboutHeroData: IData["ABOUT_HERO"];
 }) => {
   const { title_1, title_2, description } = aboutHeroData;
+
   return (
-    <section className="container mx-auto px-6 pt-6 pb-16 lg:pt-12 lg:pb-24">
+    <section
+      className="container mx-auto px-6 pt-6 pb-16 lg:pt-12 lg:pb-24"
+      aria-labelledby="about-hero-title"
+    >
       <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
         <div>
           <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600">
@@ -17,7 +21,10 @@ export const AboutHeroSection = ({
           </span>
 
           {title_1 && title_2 && (
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
+            <h1
+              id="about-hero-title"
+              className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl lg:text-6xl"
+            >
               {title_1}
               <span className="block text-blue-600">{title_2}</span>
             </h1>
@@ -36,11 +43,13 @@ export const AboutHeroSection = ({
           <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
             <Image
               src="/images/about-team.webp"
-              alt="Команда веб-студии"
+              alt={`Команда веб-студии ${LOGO}`}
               width={1200}
               height={800}
               className="h-full w-full object-cover"
               priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              quality={85}
             />
           </div>
         </div>
