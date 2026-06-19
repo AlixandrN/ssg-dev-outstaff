@@ -48,9 +48,12 @@ export interface IData {
   OUR_SERVICES: OurServicesData;
   CONTACTS: Record<string, string>;
   MODALS: Record<string, TModalData>;
+  ABOUT_HERO: Record<string, string>;
+  CTA: Record<string, string>;
 }
 
 export enum EButtonLabel {
   MORE_DETAILS = "Подробнее",
   ORDER_DEVELOPMENT = "Заказать разработку",
+  DISCUSS_PROJECT = "Обсудить проект",
 }

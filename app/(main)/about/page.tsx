@@ -1,9 +1,9 @@
+import { AboutHeroSection } from "@/components/sections/AboutHeroSection";
+import { CTASection } from "@/components/sections/CTASection";
 import { WorkStagesSection } from "@/components/sections/WorkStagesSection";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
-import { WhyChooseUsData, WorkStages } from "@/lib/types";
+import { IData, WhyChooseUsData, WorkStages } from "@/lib/types";
 // import { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
 
 const principles = [
   "Удобство пользователей",
@@ -30,61 +30,23 @@ const principles = [
 const AboutPage = async () => {
   const WORK_STAGES = await getLocalData<WorkStages>("work-stages");
   const { REASONS } = await getLocalData<WhyChooseUsData>("why-choose-us");
+  const { ABOUT_HERO, CTA } = await getLocalData<IData>("app-data");
 
   return (
     <main className="bg-white">
-      {/* Hero */}
-      <section className="container mx-auto px-6 py-24 lg:py-32">
-        <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
-          <div>
-            <span className="inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-sm font-medium text-blue-600">
-              О нашей студии
-            </span>
-
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-slate-900 md:text-5xl lg:text-6xl">
-              Создаём сайты,
-              <span className="block text-blue-600">
-                которые помогают бизнесу расти
-              </span>
-            </h1>
-
-            <p className="mt-6 text-lg leading-8 text-slate-600">
-              Мы разрабатываем современные сайты для бизнеса: от лендингов и
-              сайтов-визиток до корпоративных проектов и интернет-магазинов.
-              Наша задача — создавать не просто красивые страницы, а эффективные
-              инструменты для привлечения клиентов и развития компании.
-            </p>
-          </div>
-
-          <div className="relative">
-            <div className="absolute -inset-8 rounded-full bg-blue-100 blur-3xl opacity-50" />
-
-            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl">
-              <Image
-                src="/images/about-team.webp"
-                alt="Команда веб-студии"
-                width={1200}
-                height={800}
-                className="h-full w-full object-cover"
-                priority
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      {ABOUT_HERO && <AboutHeroSection aboutHeroData={ABOUT_HERO} />}
 
       {/* WHY_CHOOSE_US REASONS*/}
       <section className="container mx-auto px-6 pb-24">
-        <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:justify-center md:gap-6 min-[1500px]:flex-nowrap">
+        <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:justify-center md:gap-6">
           {REASONS.map((item) => (
             <div
               key={item.title}
-              className="rounded-3xl border border-slate-200 bg-white p-6 md:w-[320px] min-[1500px]:min-w-0 min-[1500px]:flex-1 transition-shadow hover:shadow-md"
+              className="w-full rounded-3xl border border-slate-200 bg-white p-6 transition-shadow hover:shadow-md sm:w-[calc(50%-12px)] lg:w-[calc(33.33%-16px)] xl:w-[calc(25%-18px)] 2xl:w-auto 2xl:flex-1 2xl:max-w-none"
             >
               <h3 className="text-lg font-semibold text-slate-900">
                 {item.title}
               </h3>
-
               <p className="mt-3 hidden text-sm leading-6 text-slate-600 md:block">
                 {item.description}
               </p>
@@ -136,8 +98,7 @@ const AboutPage = async () => {
         </div>
       </section>
 
-      {/* Process */}
-      <WorkStagesSection workStages={WORK_STAGES} />
+      {WORK_STAGES && <WorkStagesSection workStages={WORK_STAGES} />}
 
       {/* Principles */}
       <section className="bg-slate-900">
@@ -191,32 +152,7 @@ const AboutPage = async () => {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="border-t border-slate-200 bg-slate-50">
-        <div className="container mx-auto px-6 py-24">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl font-bold text-slate-900">
-              Есть идея проекта?
-            </h2>
-
-            <p className="mt-6 text-lg leading-8 text-slate-600">
-              Расскажите о своей идее, а мы предложим решение, которое подойдёт
-              именно вашему бизнесу и бюджету.
-            </p>
-
-            <div className="mt-10">
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-xl bg-amber-400 px-8 py-4 font-medium text-slate-900 transition-all duration-300
-                 hover:bg-amber-500 hover:-translate-y-0.5 hover:shadow-lg
-                  "
-              >
-                Обсудить проект
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      {CTA && <CTASection cTAData={CTA} />}
     </main>
   );
 };
