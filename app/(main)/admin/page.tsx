@@ -5,7 +5,7 @@ import { CustomersTable } from "./CustomersTable";
 export const dynamic = "force-dynamic";
 
 const AdminPage = async () => {
-  const customers = await prisma.user.findMany({
+  const customers = await prisma.customer.findMany({
     orderBy: { id: "desc" },
   });
 

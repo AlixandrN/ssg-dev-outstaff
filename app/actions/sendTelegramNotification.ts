@@ -8,8 +8,9 @@ export const sendTelegramNotification = async (formData: TCustomerData) => {
 📬 New message from App
 
 👤 Name: ${formData.name}
-📧 Email: ${formData.email}
-💬 Message: ${formData.message}
+📱 Phone: ${formData.phone}
+📧 Email: ${formData.email || "no email"} 
+💬 Message: ${formData.message || "no message"} 
 🕐 Time: ${new Date().toLocaleString("ru-RU")}
   `;
 
