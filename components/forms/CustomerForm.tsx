@@ -12,11 +12,19 @@ import { TModalData } from "@/lib/types";
 
 export type TCustomerErrors = Partial<TCustomerData> & { server?: string };
 
+const DEFAULT_CUSTOMER_DATA: TCustomerData = {
+  name: "",
+  email: "",
+  phone: "",
+  message: "",
+};
+
 type TCustomerForm = {
   isPageMode?: boolean;
   title?: string;
   successModalData: TModalData;
   errorModalData: TModalData;
+  topic?: string;
 };
 
 export const CustomerForm = ({
@@ -24,13 +32,12 @@ export const CustomerForm = ({
   title,
   errorModalData,
   successModalData,
+  topic = "default",
 }: TCustomerForm) => {
-  const [customerData, setCustomerData] = useState<TCustomerData>({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
+  const [customerData, setCustomerData] = useState<TCustomerData>(() => ({
+    ...DEFAULT_CUSTOMER_DATA,
+    topic,
+  }));
   const [errors, setErrors] = useState<TCustomerErrors>({});
   const { isPending, handleCustomer } = useCustomerForm();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -47,7 +54,6 @@ export const CustomerForm = ({
       return;
     }
 
-
     const result = await handleCustomer(customerData);
     setIsModalOpen(true);
     if (!result?.success && result?.serverErrors) {
@@ -56,12 +62,7 @@ export const CustomerForm = ({
     }
 
     if (result?.success) {
-      setCustomerData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+      setCustomerData({ ...DEFAULT_CUSTOMER_DATA, topic });
     }
 
     (document.activeElement as HTMLElement)?.blur();
