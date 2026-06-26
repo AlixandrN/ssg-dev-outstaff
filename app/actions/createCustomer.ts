@@ -3,8 +3,9 @@
 import { prisma } from "@/lib/prisma";
 import { TCustomerData } from "@/lib/constants";
 import { sendTelegramNotification } from "./sendTelegramNotification";
+import { sendTelegramTrouble } from "./sendTelegramTrouble";
 
-export async function createCustomer(data: TCustomerData) {
+export const createCustomer = async (data: TCustomerData) => {
   try {
     sendTelegramNotification(data);
     const customer = await prisma.customer.create({ data });
@@ -12,6 +13,7 @@ export async function createCustomer(data: TCustomerData) {
     return { success: true, data: customer };
   } catch {
     console.log("*** node error ***");
+    sendTelegramTrouble(data.name);
     return { success: false, serverErrors: { server: "DB_PROBLEM" } };
   }
-}
+};

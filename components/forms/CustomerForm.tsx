@@ -18,6 +18,7 @@ const DEFAULT_CUSTOMER_DATA: TCustomerData = {
   phone: "",
   message: "",
 };
+// const pathname = usePathname(); // to do, "/products/nike-shoes"
 
 type TCustomerForm = {
   isPageMode?: boolean;
@@ -46,8 +47,6 @@ export const CustomerForm = ({
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const validateErrors = validateForm(customerData);
-
-    console.log("validateErrors: ", validateErrors);
 
     if (Object.keys(validateErrors).length) {
       setErrors(validateErrors);
