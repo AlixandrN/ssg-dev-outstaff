@@ -28,6 +28,7 @@ export const CustomerForm = ({
   const [customerData, setCustomerData] = useState<TCustomerData>({
     name: "",
     email: "",
+    phone: "",
     message: "",
   });
   const [errors, setErrors] = useState<TCustomerErrors>({});
@@ -38,10 +39,15 @@ export const CustomerForm = ({
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
     const validateErrors = validateForm(customerData);
+
+    console.log("validateErrors: ", validateErrors);
+
     if (Object.keys(validateErrors).length) {
       setErrors(validateErrors);
       return;
     }
+
+
     const result = await handleCustomer(customerData);
     setIsModalOpen(true);
     if (!result?.success && result?.serverErrors) {
@@ -53,6 +59,7 @@ export const CustomerForm = ({
       setCustomerData({
         name: "",
         email: "",
+        phone: "",
         message: "",
       });
     }
@@ -99,24 +106,30 @@ export const CustomerForm = ({
       <InputLabel
         id="name"
         value={customerData.name}
-        label="Полное имя *"
+        label="Имя"
         setValue={handleData}
         errorMessage={errors.name}
       />
       <InputLabel
+        id="phone"
+        value={customerData.phone}
+        label="Телефон"
+        setValue={handleData}
+        errorMessage={errors.phone}
+      />
+      <InputLabel
         id="email"
         value={customerData.email}
-        label="Email адрес *"
+        label="Email адрес"
         setValue={handleData}
         errorMessage={errors.email}
       />
       <InputLabel
         id="message"
         value={customerData.message}
-        label="Ваше сообщение *"
+        label="Ваше сообщение"
         setValue={handleData}
         errorMessage={errors.message}
-        isTextareaMode
       />
       <ButtonIcon
         type="submit"

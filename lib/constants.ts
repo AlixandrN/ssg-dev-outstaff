@@ -1,6 +1,13 @@
 export const LOGO = "LOGO";
 export const BASE_URL = "https://ssg-dev-outstaff.vercel.app/"; // add to env
 
+export const INPUT_MAX_LENGTH = 40;
+export const PHONE_INPUT_MAX_LENGTH = 20;
+export const MESSAGE_INPUT_MAX_LENGTH = 180;
+export const PHONE_MIN_LENGTH = 9;
+export const PHONE_MAX_LENGTH = 11;
+export const CUSTOMER_NAME_MIN_LENGTH = 2;
+
 export enum EPublicRoutes {
   HOME = "/",
   ABOUT = "about",
@@ -36,7 +43,9 @@ export enum EFrameworkCard {
 export type TCustomerData = {
   name: string;
   email: string;
+  phone: string;
   message: string;
+  topic?: string;
 };
 
 export enum EStub {
