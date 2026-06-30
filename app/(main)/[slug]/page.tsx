@@ -1,9 +1,9 @@
+import Image from "next/image";
+import { notFound } from "next/navigation";
+import { PurchaseModalWrapper } from "@/components/modals/PurchaseModalWrapper";
 import { currency, EPhrases } from "@/lib/constants";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
-import { EButtonLabel, TProduct } from "@/lib/types";
-import Image from "next/image";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { IData, TProduct } from "@/lib/types";
 
 // Metadata for Google and Яндекс
 export async function generateMetadata({
@@ -29,9 +29,12 @@ export async function generateMetadata({
 
 const ItemPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug: id } = await params;
-
+  const { MODALS, HOME } = await getLocalData<IData>("app-data");
   const PRODUCTS = await getLocalData<TProduct[]>("products");
   const product = PRODUCTS.find((product) => product.id === id);
+  const { GET_IN_TOUCH_SUCCESS, GET_IN_TOUCH_ERROR } = MODALS;
+  const { GET_IN_TOUCH_PURCHASE } = HOME;
+
   if (!product) {
     notFound();
   }
@@ -138,13 +141,12 @@ const ItemPage = async ({ params }: { params: Promise<{ slug: string }> }) => {
                 </div>
               </div>
 
-              <Link
-                href={`/order?product=${id}`}
-                aria-label={`Заказать услугу: ${product.title}`}
-                className="btn-link-primary btn-lg"
-              >
-                {EButtonLabel.ORDER_DEVELOPMENT}
-              </Link>
+              <PurchaseModalWrapper
+                message={GET_IN_TOUCH_PURCHASE}
+                purchaseItem={product.title}
+                successModalData={GET_IN_TOUCH_SUCCESS}
+                errorModalData={GET_IN_TOUCH_ERROR}
+              />
             </div>
           </div>
         </div>

@@ -65,5 +65,7 @@ export interface IData {
 export enum EButtonLabel {
   MORE_DETAILS = "Подробнее",
   ORDER_DEVELOPMENT = "Заказать разработку",
+  ORDER = "Заказать",
   DISCUSS_PROJECT = "Обсудить проект",
+  CLOSE = "Закрыть",
 }

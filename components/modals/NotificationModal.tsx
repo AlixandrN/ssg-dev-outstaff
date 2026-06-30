@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
-import { ButtonIcon } from "../buttons/ButtonIcon";
+import { ButtonIcon } from "../ui/buttons/ButtonIcon";
 import { TModalData } from "@/lib/types";
 
 type TNotificationModal = {
@@ -20,6 +20,7 @@ export const NotificationModal = ({
 }: TNotificationModal) => {
   const [mounted, setMounted] = useState(false);
   const { title, message, closeButtonMessage } = data;
+
   useEffect(() => {
     setMounted(true);
   }, []);
