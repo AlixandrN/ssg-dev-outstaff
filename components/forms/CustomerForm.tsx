@@ -7,7 +7,7 @@ import { validateForm } from "./validateForm";
 import { TCustomerData } from "@/lib/constants";
 import { useCustomerForm } from "@/hooks/useCustomerForm";
 import { useHandleMobileFocus } from "@/hooks/useHandleMobileFocus";
-import { NotificationModal } from "../ui/modals/NotificationModal";
+import { NotificationModal } from "../modals/NotificationModal";
 import { TModalData } from "@/lib/types";
 
 export type TCustomerErrors = Partial<TCustomerData> & { server?: string };
@@ -18,23 +18,26 @@ const DEFAULT_CUSTOMER_DATA: TCustomerData = {
   phone: "",
   message: "",
 };
-// const pathname = usePathname(); // to do, "/products/nike-shoes"
 
-type TCustomerForm = {
+interface CustomerForm {
   isPageMode?: boolean;
+  closeParentModal?: VoidFunction;
+  isModalMode?: boolean;
   title?: string;
   successModalData: TModalData;
   errorModalData: TModalData;
   topic?: string;
-};
+}
 
 export const CustomerForm = ({
   isPageMode,
+  closeParentModal,
+  isModalMode,
   title,
   errorModalData,
   successModalData,
   topic = "default",
-}: TCustomerForm) => {
+}: CustomerForm) => {
   const [customerData, setCustomerData] = useState<TCustomerData>(() => ({
     ...DEFAULT_CUSTOMER_DATA,
     topic,
@@ -77,11 +80,16 @@ export const CustomerForm = ({
   const onCloseModal = () => {
     setErrors({});
     setIsModalOpen(false);
+    if (closeParentModal) {
+      closeParentModal();
+    }
   };
 
   return (
     <form
-      className={` p-6 bg-white md:rounded-lg shadow-none md:shadow-md w-full md:w-1/2`}
+      className={`p-6 bg-white md:rounded-lg shadow-none md:shadow-md ${
+        isModalMode ? "w-full" : "w-full md:w-1/2"
+      }`}
       noValidate
       aria-labelledby="form-title"
       aria-describedby="form-description"
@@ -117,20 +125,24 @@ export const CustomerForm = ({
         setValue={handleData}
         errorMessage={errors.phone}
       />
-      <InputLabel
-        id="email"
-        value={customerData.email}
-        label="Email адрес"
-        setValue={handleData}
-        errorMessage={errors.email}
-      />
-      <InputLabel
-        id="message"
-        value={customerData.message}
-        label="Ваше сообщение"
-        setValue={handleData}
-        errorMessage={errors.message}
-      />
+      {!isModalMode && (
+        <InputLabel
+          id="email"
+          value={customerData.email}
+          label="Email адрес"
+          setValue={handleData}
+          errorMessage={errors.email}
+        />
+      )}
+      {!isModalMode && (
+        <InputLabel
+          id="message"
+          value={customerData.message}
+          label="Ваше сообщение"
+          setValue={handleData}
+          errorMessage={errors.message}
+        />
+      )}
       <ButtonIcon
         type="submit"
         label={"Send Message"}
