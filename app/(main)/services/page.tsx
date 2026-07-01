@@ -8,16 +8,15 @@ import {
   BASE_URL,
   EPhrases,
   EPublicRoutes,
-  ESeoMetadata,
   LOGO,
   ROUTE_LABELS,
 } from "@/lib/constants";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { CTASection } from "@/components/sections/CTASection";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const title = `${EPhrases.SERVICES_WEB_STUDIO} | Разработка сайтов на заказ | ${LOGO}`;
-  const description = ESeoMetadata.SERVICES;
+export const generateMetadata = async (): Promise<Metadata> => {
+  const title = `${EPhrases.SERVICES_WEB_STUDIO} | ${EPhrases.SEO_NEXTJS} | ${LOGO}`;
+  const description = EPhrases.SEO_SERVICES;
   return {
     title,
     description,
@@ -27,7 +26,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       // link on social networks (tg)
       title,
-      description: description,
+      description,
       url: `${BASE_URL}/services`,
       siteName: `${LOGO}`,
       images: [
@@ -35,14 +34,14 @@ export async function generateMetadata(): Promise<Metadata> {
           url: `${BASE_URL}/images/services.webp`,
           width: 1200,
           height: 630,
-          alt: EPhrases.SERVICES_WEB_STUDIO,
+          alt: `${EPhrases.SERVICES_WEB_STUDIO} ${LOGO}`,
         },
       ],
       locale: "ru_BY",
       type: "website",
     },
   };
-}
+};
 
 const ServicesPage = async () => {
   const { OUR_SERVICES, CTA } = await getLocalData<IData>("app-data");

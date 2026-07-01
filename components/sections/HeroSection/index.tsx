@@ -4,7 +4,7 @@ interface HeroSection {
   title: string;
   additionalTitle?: string;
   description: string;
-  mode: "about_team" | "services";
+  mode: "about" | "services";
   bage: string;
 }
 
