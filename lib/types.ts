@@ -30,8 +30,8 @@ export interface WhyChooseUsData {
 }
 
 export interface OurServicesData {
-  TITLE: string;
-  SUBTITLE: string;
+  title: string;
+  description: string;
   SERVICES: { id: string; title: string; description: string }[];
 }
 
