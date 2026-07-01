@@ -1,7 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-type AnimationType = "fade" | "slide-up" | "slide-down" | "zoom" | "flip";
+type AnimationType =
+  | "fade"
+  | "slide-up"
+  | "slide-down"
+  | "zoom"
+  | "flip"
+  | "slide-left";
 
 interface ScrollAnimationProps {
   children: React.ReactNode;
@@ -35,6 +41,10 @@ const getAnimationClasses = (type: AnimationType, isVisible: boolean) => {
       return `${baseClasses} ${
         isVisible ? "opacity-100 rotate-0" : "opacity-0 rotate-12"
       }`;
+    case "slide-left":
+      return `${baseClasses} ${
+        isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+      }`;
     default:
       return baseClasses;
   }
@@ -67,7 +77,7 @@ export const ScrollAnimationBox = ({
       {
         threshold,
         rootMargin,
-      }
+      },
     );
 
     const currentElement = elementRef.current;

@@ -8,7 +8,7 @@ export const OurServicesSection = ({
 }: {
   ourServicesData: IData["OUR_SERVICES"];
 }) => {
-  const { TITLE, SUBTITLE, SERVICES } = ourServicesData;
+  const { title, description, SERVICES } = ourServicesData;
 
   return (
     <section
@@ -17,10 +17,10 @@ export const OurServicesSection = ({
     >
       <div className="text-primary-content container-custom py-16 md:py-20">
         <div className="text-center mb-10 md:mb-14">
-          <H2Title id="services-title" title={TITLE} centered lightMode />
+          <H2Title id="services-title" title={title} centered lightMode />
 
           <p className="text-sm md:text-xl text-primary-content/80 max-w-3xl mx-auto px-4 md:px-0">
-            {SUBTITLE}
+            {description}
           </p>
 
           <div

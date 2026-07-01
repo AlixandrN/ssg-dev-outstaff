@@ -1,10 +1,11 @@
-import { AboutHeroSection } from "@/components/sections/AboutHeroSection";
+import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSolutionsSection } from "@/components/sections/AboutSolutionsSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { WhyChooseUsAboutSection } from "@/components/sections/WhyChooseUsAboutSection";
 import { WorkStagesSection } from "@/components/sections/WorkStagesSection";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
 import { IData, WhyChooseUsData, WorkStages } from "@/lib/types";
+import { EPublicRoutes, LOGO, ROUTE_LABELS } from "@/lib/constants";
 // import { Metadata } from "next";
 
 const principles = [
@@ -34,10 +35,19 @@ const AboutPage = async () => {
   const { REASONS } = await getLocalData<WhyChooseUsData>("why-choose-us");
   const { ABOUT_HERO, CTA, ABOUT_SOLUTIONS } =
     await getLocalData<IData>("app-data");
+  const { title, additionalTitle, description } = ABOUT_HERO;
 
   return (
     <div className="bg-white">
-      {ABOUT_HERO && <AboutHeroSection aboutHeroData={ABOUT_HERO} />}
+      {ABOUT_HERO && (
+        <HeroSection
+          title={title}
+          additionalTitle={additionalTitle}
+          description={description}
+          mode="about_team"
+          bage={`${ROUTE_LABELS[EPublicRoutes.ABOUT]} ${LOGO}`}
+        />
+      )}
       {REASONS && <WhyChooseUsAboutSection whyChooseUsReasons={REASONS} />}
       {ABOUT_SOLUTIONS && (
         <AboutSolutionsSection aboutSolutionsData={ABOUT_SOLUTIONS} />

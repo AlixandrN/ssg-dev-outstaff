@@ -1,11 +1,11 @@
 export const LOGO = "LOGO";
-export const BASE_URL = "https://ssg-dev-outstaff.vercel.app/"; // add to env
+export const BASE_URL = "https://ssg-dev-outstaff.vercel.app/"; // to do add to env
 
 export const INPUT_MAX_LENGTH = 40;
 export const PHONE_INPUT_MAX_LENGTH = 20;
 export const MESSAGE_INPUT_MAX_LENGTH = 180;
 export const PHONE_MIN_LENGTH = 9;
-export const PHONE_MAX_LENGTH = 11;
+export const PHONE_MAX_LENGTH = 12;
 export const CUSTOMER_NAME_MIN_LENGTH = 2;
 
 export enum EPublicRoutes {
@@ -15,7 +15,7 @@ export enum EPublicRoutes {
   CONTACT = "contact",
 }
 
-export const routeLabels = {
+export const ROUTE_LABELS = {
   [EPublicRoutes.HOME]: "Главная",
   [EPublicRoutes.ABOUT]: "О нас",
   [EPublicRoutes.SERVICES]: "Услуги",
@@ -24,7 +24,7 @@ export const routeLabels = {
 
 export type TLink = {
   to: (typeof EPublicRoutes)[keyof typeof EPublicRoutes];
-  label: (typeof routeLabels)[keyof typeof routeLabels];
+  label: (typeof ROUTE_LABELS)[keyof typeof ROUTE_LABELS];
 };
 
 export const currency = "р";
@@ -55,4 +55,9 @@ export enum EStub {
 export enum EPhrases {
   ABOUT_PRODUCT = "О продукте",
   WHAT_IS_INCLUDED = "Что включено",
+  SERVICES_WEB_STUDIO = "Услуги веб-студии",
+}
+
+export enum ESeoMetadata {
+  SERVICES = "Разработка сайтов любой сложности: лендинги, интернет-магазины, корпоративные порталы. Полный цикл под ключ с SEO оптимизацией и техподдержкой.",
 }

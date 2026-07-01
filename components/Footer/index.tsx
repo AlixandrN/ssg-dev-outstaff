@@ -1,4 +1,4 @@
-import { EPublicRoutes, routeLabels } from "@/lib/constants";
+import { EPublicRoutes, ROUTE_LABELS } from "@/lib/constants";
 import { LinkFooterItem } from "./LinkFooterItem";
 
 export const Footer = () => {
@@ -28,7 +28,7 @@ export const Footer = () => {
                     <LinkFooterItem
                       key={key}
                       to={path}
-                      label={routeLabels[path]}
+                      label={ROUTE_LABELS[path]}
                     />
                   );
                 })}

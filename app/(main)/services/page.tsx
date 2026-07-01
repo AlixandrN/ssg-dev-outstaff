@@ -4,13 +4,20 @@ import { IData } from "@/lib/types";
 import { ServiceCart } from "./ServiceCart";
 import { serviceIconById } from "@/lib/data-utils/serviceIconById";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
-import { CustomerForm } from "@/components/forms/CustomerForm";
-import { BASE_URL, LOGO } from "@/lib/constants";
+import {
+  BASE_URL,
+  EPhrases,
+  EPublicRoutes,
+  ESeoMetadata,
+  LOGO,
+  ROUTE_LABELS,
+} from "@/lib/constants";
+import { HeroSection } from "@/components/sections/HeroSection";
+import { CTASection } from "@/components/sections/CTASection";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = `Услуги веб-студии | Разработка сайтов на заказ | ${LOGO}`;
-  const description =
-    "Разработка сайтов любой сложности: лендинги, интернет-магазины, корпоративные порталы. Полный цикл под ключ с SEO оптимизацией и техподдержкой.";
+  const title = `${EPhrases.SERVICES_WEB_STUDIO} | Разработка сайтов на заказ | ${LOGO}`;
+  const description = ESeoMetadata.SERVICES;
   return {
     title,
     description,
@@ -19,16 +26,16 @@ export async function generateMetadata(): Promise<Metadata> {
     },
     openGraph: {
       // link on social networks (tg)
-      title: title,
+      title,
       description: description,
       url: `${BASE_URL}/services`,
       siteName: `${LOGO}`,
       images: [
         {
-          url: `${BASE_URL}/images/about-team.webp`,
+          url: `${BASE_URL}/images/services.webp`,
           width: 1200,
           height: 630,
-          alt: `Услуги веб-студии`,
+          alt: EPhrases.SERVICES_WEB_STUDIO,
         },
       ],
       locale: "ru_BY",
@@ -38,37 +45,32 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const ServicesPage = async () => {
-  const { OUR_SERVICES, MODALS } = await getLocalData<IData>("app-data");
-  const { TITLE, SUBTITLE, SERVICES } = OUR_SERVICES;
-  const { GET_IN_TOUCH_SUCCESS, GET_IN_TOUCH_ERROR } = MODALS;
+  const { OUR_SERVICES, CTA } = await getLocalData<IData>("app-data");
+  const { title, description, SERVICES } = OUR_SERVICES;
 
   return (
     <div
-      className="py-20 bg-gray-50"
+      className="bg-white"
       itemScope
       itemType="https://schema.org/CollectionPage"
     >
-      <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-16">
-          <h1
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight"
-            itemProp="headline"
-          >
-            {TITLE}
-          </h1>
-          <h2 className="sr-only">Наши услуги по разработке сайтов</h2>
-          <p
-            className="text-xl text-gray-600 max-w-3xl mx-auto"
-            itemProp="description"
-          >
-            {SUBTITLE}
-          </p>
+      {OUR_SERVICES && (
+        <HeroSection
+          title={title}
+          description={description}
+          mode="services"
+          bage={`${ROUTE_LABELS[EPublicRoutes.SERVICES]} ${LOGO}`}
+        />
+      )}
 
-          <div
-            className="w-24 h-1 bg-(--brand-blue) mx-auto mt-6 rounded-full"
-            aria-hidden="true"
-          ></div>
-        </div>
+      <section
+        className="container mx-auto px-6 pb-24"
+        aria-labelledby="reasons-title"
+      >
+        {/* SEO */}
+        <h2 id="reasons-title" className="sr-only">
+          {EPhrases.SERVICES_WEB_STUDIO}
+        </h2>
 
         <ul
           className="grid grid-cols-1 md:grid-cols-2 gap-8"
@@ -81,7 +83,7 @@ const ServicesPage = async () => {
               triggerOnce={true}
               rootMargin="50px"
               animationType="zoom"
-              delay={index * 100}
+              delay={index * 80}
             >
               <div
                 itemScope
@@ -98,14 +100,17 @@ const ServicesPage = async () => {
             </ScrollAnimationBox>
           ))}
         </ul>
-      </div>
+      </section>
 
-      <div className="container mx-auto px-4 max-w-8xl flex justify-center mt-8">
-        <CustomerForm
-          successModalData={GET_IN_TOUCH_SUCCESS}
-          errorModalData={GET_IN_TOUCH_ERROR}
-        />
-      </div>
+      <ScrollAnimationBox
+        key={"id"}
+        triggerOnce={true}
+        rootMargin="50px"
+        animationType="slide-left"
+        delay={500}
+      >
+        {CTA && <CTASection cTAData={CTA} />}
+      </ScrollAnimationBox>
     </div>
   );
 };
