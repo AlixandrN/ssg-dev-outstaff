@@ -1,50 +1,78 @@
+import { Metadata } from "next";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSolutionsSection } from "@/components/sections/AboutSolutionsSection";
 import { CTASection } from "@/components/sections/CTASection";
 import { WhyChooseUsAboutSection } from "@/components/sections/WhyChooseUsAboutSection";
 import { WorkStagesSection } from "@/components/sections/WorkStagesSection";
 import { getLocalData } from "@/lib/data-utils/getLocalData";
-import { IData, WhyChooseUsData, WorkStages } from "@/lib/types";
-import { EPublicRoutes, LOGO, ROUTE_LABELS } from "@/lib/constants";
-// import { Metadata } from "next";
+import {
+  IData,
+  PrinciplesData,
+  WhyChooseUsData,
+  WorkStages,
+} from "@/lib/types";
+import {
+  BASE_URL,
+  EPhrases,
+  EPublicRoutes,
+  LOGO,
+  ROUTE_LABELS,
+} from "@/lib/constants";
+import { PrinciplesSection } from "@/components/sections/PrinciplesSection";
+import { MissionSection } from "@/components/sections/MissionSection";
 
-const principles = [
-  "Удобство пользователей",
-  "Современный дизайн",
-  "Высокая скорость загрузки",
-  "Адаптация под мобильные устройства",
-  "SEO-оптимизация",
-  "Надёжность и безопасность",
-];
+export const generateMetadata = async (): Promise<Metadata> => {
+  const title = `${EPhrases.SERVICES_WEB_STUDIO} | ${EPhrases.SEO_NEXTJS} | ${LOGO}`;
+  const description = `${EPhrases.SEO_ABOUT_PAGE}`;
 
-// export async function generateMetadata(): Promise<Metadata> {
-//   const { OUR_SERVICES } = await getLocalData<IData>("app-data");
-//   return {
-//     title: OUR_SERVICES.TITLE,
-//     description: OUR_SERVICES.SUBTITLE, // to do add description to the data
-//     openGraph: {
-//       title: OUR_SERVICES.TITLE,
-//       description: OUR_SERVICES.SUBTITLE,
-//       type: "website",
-//     },
-//   };
-// }
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `${BASE_URL}/about`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${BASE_URL}/about`,
+      siteName: `${LOGO}`,
+      images: [
+        {
+          url: `${BASE_URL}/images/about.webp`,
+          width: 1200,
+          height: 630,
+          alt: `${EPhrases.SERVICES_WEB_STUDIO} ${LOGO}`,
+        },
+      ],
+      locale: "ru_BY",
+      type: "website",
+    },
+  };
+};
 
 const AboutPage = async () => {
   const WORK_STAGES = await getLocalData<WorkStages>("work-stages");
   const { REASONS } = await getLocalData<WhyChooseUsData>("why-choose-us");
-  const { ABOUT_HERO, CTA, ABOUT_SOLUTIONS } =
+  const PRINCIPLES_DATA = await getLocalData<PrinciplesData>("principles");
+  const { ABOUT_HERO, CTA, ABOUT_SOLUTIONS, ABOUT_MISSION } =
     await getLocalData<IData>("app-data");
   const { title, additionalTitle, description } = ABOUT_HERO;
 
   return (
-    <div className="bg-white">
+    <div className="bg-white" itemScope itemType="https://schema.org/AboutPage">
+      {/* to do */}
+      <meta itemProp="name" content={`О компании — ${LOGO}`} />
+      <meta
+        itemProp="description"
+        content="Узнайте больше о нашей студии веб-разработки"
+      />
+
       {ABOUT_HERO && (
         <HeroSection
           title={title}
           additionalTitle={additionalTitle}
           description={description}
-          mode="about_team"
+          mode="about"
           bage={`${ROUTE_LABELS[EPublicRoutes.ABOUT]} ${LOGO}`}
         />
       )}
@@ -54,57 +82,11 @@ const AboutPage = async () => {
       )}
       {WORK_STAGES && <WorkStagesSection workStages={WORK_STAGES} />}
 
-      {/* Principles */}
-      <section className="bg-slate-900">
-        <div className="container mx-auto px-6 py-24">
-          <div className="mx-auto max-w-4xl text-center">
-            <h2 className="text-3xl font-bold text-white md:text-4xl">
-              Наш подход
-            </h2>
+      {PRINCIPLES_DATA && (
+        <PrinciplesSection principlesData={PRINCIPLES_DATA} />
+      )}
 
-            <p className="mt-6 text-lg text-slate-300">
-              Мы уделяем внимание не только дизайну, но и качеству кода,
-              производительности, безопасности и удобству использования. Мы
-              стремимся создавать сайты, которые остаются актуальными и
-              развиваются вместе с бизнесом. Поэтому уделяем внимание не только
-              внешнему виду, но и качеству реализации, производительности и
-              удобству дальнейшего развития проекта.
-            </p>
-          </div>
-
-          <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {principles.map((item) => (
-              <div
-                key={item}
-                className="rounded-2xl border border-slate-800 bg-slate-800 p-6"
-              >
-                <p className="font-medium text-white">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Mission */}
-      <section className="container mx-auto px-6 py-24">
-        <div className="mx-auto max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-slate-900 md:text-4xl">
-            Что для нас важно
-          </h2>
-
-          <p className="mt-8 text-lg leading-8 text-slate-600">
-            Мы верим, что хороший сайт — это не просто красивая картинка. Это
-            инструмент, который помогает бизнесу расти, находить новых клиентов
-            и выделяться среди конкурентов. Поэтому мы уделяем внимание каждой
-            детали: от удобства интерфейса до скорости загрузки и качества кода.
-          </p>
-
-          <p className="mt-6 text-xl font-semibold text-slate-900">
-            Наша задача — создавать сайты, которыми можно гордиться и которые
-            действительно приносят результат.
-          </p>
-        </div>
-      </section>
+      {ABOUT_MISSION && <MissionSection missionData={ABOUT_MISSION} />}
 
       {CTA && <CTASection cTAData={CTA} />}
     </div>

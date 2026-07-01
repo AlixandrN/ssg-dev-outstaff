@@ -35,6 +35,12 @@ export interface OurServicesData {
   SERVICES: { id: string; title: string; description: string }[];
 }
 
+export interface PrinciplesData {
+  title: string;
+  description: string;
+  principles: { id: string; title: string }[];
+}
+
 export interface WorkStages {
   TITLE: string;
   SUBTITLE: string;
@@ -50,6 +56,12 @@ export interface AboutSolutions {
   }[];
 }
 
+export interface MissionData {
+  title: string;
+  description: string;
+  quote: string;
+}
+
 export interface IData {
   COMMON: Record<string, string>;
   FEATURES: string[];
@@ -60,6 +72,7 @@ export interface IData {
   ABOUT_HERO: Record<string, string>;
   CTA: Record<string, string>;
   ABOUT_SOLUTIONS: AboutSolutions;
+  ABOUT_MISSION: MissionData;
 }
 
 export enum EButtonLabel {
