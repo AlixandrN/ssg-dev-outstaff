@@ -5,7 +5,7 @@ export const INPUT_MAX_LENGTH = 40;
 export const PHONE_INPUT_MAX_LENGTH = 20;
 export const MESSAGE_INPUT_MAX_LENGTH = 180;
 export const PHONE_MIN_LENGTH = 9;
-export const PHONE_MAX_LENGTH = 11;
+export const PHONE_MAX_LENGTH = 12;
 export const CUSTOMER_NAME_MIN_LENGTH = 2;
 
 export enum EPublicRoutes {
